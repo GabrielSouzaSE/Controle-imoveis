@@ -9,10 +9,10 @@ except IOError:
     print('Criando novos arquivos...')
     criarDataFrame()
 
-listaProf = []
-listaAluno = []
-listaDisc = []
-listaNota = []
+listaProp = []
+listaImovel = []
+listaInquilino = []
+lista = []
 notas = []
 alunos = []
 
@@ -35,7 +35,7 @@ while True:
     escolha = input('Escolha uma das opções acima: ')
 
     if escolha == '0':
-        salvarDataframe(listaProf, listaAluno, listaDisc, listaNota)
+        salvarDataframe()
         print('\nFim do programa.')
         break
 
