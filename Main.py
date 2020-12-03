@@ -19,7 +19,7 @@ alunos = []
 getDataFramefromExcel(listaProf, listaAluno, listaDisc, listaNota)
 
 while True:
-    print('\nMenu de Imvel\n\n'
+    print('\nMenu de Imóvel\n\n'
           '1 - Cadastrar Proprietário\n'
           '2 - Cadastrar Imóvel\n'
           '3 - Cadastrar Inquilino\n'
