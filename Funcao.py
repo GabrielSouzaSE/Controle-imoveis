@@ -247,9 +247,9 @@ def validar_nota(lista_notas):
                 break
 
 def criarDataFrame():
-    df = pd.DataFrame(columns=['Nome', 'Matricula', 'Data de Nascimento'])  # Dataframe Professor
-    df2 = pd.DataFrame(columns=['Nome', 'Matricula', 'Data de Nascimento'])  # Dataframe Aluno
-    df3 = pd.DataFrame(columns=['Codigo', 'Nome', 'Matricula do professor'])  # Dataframe Disciplinas
+    df = pd.DataFrame(columns=['Nome', 'CPF', 'Data de Nascimento'])  # Dataframe Proprietário
+    df2 = pd.DataFrame(columns=['Codigo', 'CPF do proprietário', 'Tipo', 'Endereço', 'Valor do Aluguel', 'Status Alugado'])  # Dataframe Imóvel
+    df3 = pd.DataFrame(columns=['Nome', 'CPF', 'Data de Nascimento'])  # Dataframe Inquilino
     df4 = pd.DataFrame(columns=['Codigo da Disciplina', 'Matrícula do aluno', 'Nota 1', 'Nota 2'])  # Dataframe Notas
     excel_writer = pd.ExcelWriter("Dados.xlsx")
     df.to_excel(excel_writer,'Professores', index=False)
