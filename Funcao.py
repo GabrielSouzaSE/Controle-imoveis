@@ -19,6 +19,7 @@ def cadastrarProprietario():
 
             cpf = input('\nInforme o CPF do propritário (apenas números): ')
             assert cpf.isnumeric()
+
             data = input('\nInforme a data de nascimento do proprietário (DD/MM/AAAA): ')
             data_nascimento = date(int(data[6:]), int(data[3:5]), int(data[:2]))
 
@@ -57,12 +58,11 @@ def cadastrarImovel():
             escolha = input('\nInforme o tipo do imóvel a partir das opções acima: ')
 
             if escolha == '1':
-                self.tipo = 'Casa'
+                tipo = 'Casa'
             elif escolha == '2':
-                self.tipo = 'Apartamento'
+                tipo = 'Apartamento'
             else:
                 raise OverflowError
-
 
             endereco = input('\nInforme o endereço do imóvel: ')
             assert len(endereco) >= 1
@@ -100,6 +100,7 @@ def cadastrarInquilino():
 
             cpf = input('\nInforme o CPF do inquilino (apenas números): ')
             assert cpf.isnumeric()
+            
             data = input('\nInforme a data de nascimento do proprietário (DD/MM/AAAA): ')
             data_nascimento = date(int(data[6:]), int(data[3:5]), int(data[:2]))
 
