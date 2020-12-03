@@ -9,22 +9,11 @@ def cadastrarProprietario():
             nome = input('\nInforme o nome do proprietário: ').strip().capitalize()
             assert len(nome) >= 1
 
-            # for i in range(len(lista_professores)):
-            #     if matricula == lista_professores[i].matricula:
-            #         print("Já existe um professor cadastrado com essa matricula!")
-            #         condicao = True
-            #         break 
-            # if condicao == True:
-            #     break
-
             cpf = input('\nInforme o CPF do propritário (apenas números): ')
             assert cpf.isnumeric()
 
             data = input('\nInforme a data de nascimento do proprietário (DD/MM/AAAA): ')
             data_nascimento = date(int(data[6:]), int(data[3:5]), int(data[:2]))
-
-            # professor = Classe.Professor(nome,matricula,data_nascimento)
-            # lista_professores.append(professor)
 
             print('Proprietário cadastrado com sucesso!')
             break
@@ -41,19 +30,11 @@ def cadastrarImovel():
             codigo = input('\nInforme o código do inquilino: ')
             assert codigo.isnumeric()
 
-            # for i in range(len(lista_professores)):
-            #     if matricula == lista_professores[i].matricula:
-            #         print("Já existe um professor cadastrado com essa matricula!")
-            #         condicao = True
-            #         break 
-            # if condicao == True:
-            #     break
-
             cpf_prop = input('\nInforme o CPF do proprietário (apenas números): ')
             assert cpf_prop.isnumeric()
 
             print('\n1 - Casa\n'
-                    '2 - Apartamento')
+                  '2 - Apartamento')
 
             escolha = input('\nInforme o tipo do imóvel a partir das opções acima: ')
 
@@ -67,17 +48,14 @@ def cadastrarImovel():
             endereco = input('\nInforme o endereço do imóvel: ')
             assert len(endereco) >= 1
 
-            valor = input('\nInforme o valor do aluguel: ')
+            valor = float(input('\nInforme o valor do aluguel: '))
 
             data = input('\nInforme a data de nascimento do proprietário (DD/MM/AAAA): ')
             data_nascimento = date(int(data[6:]), int(data[3:5]), int(data[:2]))
 
-            # professor = Classe.Professor(nome,matricula,data_nascimento)
-            # lista_professores.append(professor)
-
             print('Imóvel cadastrado com sucesso!')
             break
-        
+
         except (AssertionError, ValueError, OverflowError):
             voltar = voltarMenu()
             if voltar.casefold() == 's':
@@ -90,31 +68,40 @@ def cadastrarInquilino():
             nome = input('\nInforme o nome do inquilino: ').strip().capitalize()
             assert len(nome) >= 1
 
-            # for i in range(len(lista_professores)):
-            #     if matricula == lista_professores[i].matricula:
-            #         print("Já existe um professor cadastrado com essa matricula!")
-            #         condicao = True
-            #         break 
-            # if condicao == True:
-            #     break
-
             cpf = input('\nInforme o CPF do inquilino (apenas números): ')
             assert cpf.isnumeric()
-            
+
             data = input('\nInforme a data de nascimento do proprietário (DD/MM/AAAA): ')
             data_nascimento = date(int(data[6:]), int(data[3:5]), int(data[:2]))
 
-            # professor = Classe.Professor(nome,matricula,data_nascimento)
-            # lista_professores.append(professor)
-
             print('Inquilino cadastrado com sucesso!')
             break
-        
+
         except (AssertionError, ValueError):
             voltar = voltarMenu()
             if voltar.casefold() == 's':
                 break
 
+
+def RegistrarAluguel():
+    while True:
+        try:
+            cpf_inqui = input('\nInforme o CPF do inquilino (apenas números): ')
+            assert cpf_inqui.isnumeric()
+
+            codigo_imovel = input('\nInforme o código do imóvel: ')
+            assert codigo_imovel.isnumeric()
+
+            data_inicio = input('\nInforme a data de início do aluguel (DD/MM/AAAA): ')
+            data_inicio = date(int(data[6:]), int(data[3:5]), int(data[:2]))
+
+            print('Aluguel cadastrado com sucesso!')
+            break
+
+        except (AssertionError, ValueError):
+            voltar = voltarMenu()
+            if voltar.casefold() == 's':
+                break
 
 
 def buscarDisciplina(busca, listaDisc):
@@ -130,6 +117,7 @@ def buscarProfessor(disciplina, listaProf):
         if str(listaProf[i].matricula) == str(disciplina.matricula_professor):
             return listaProf[i]
 
+
 def voltarMenu():
     while True:
         try:
@@ -139,6 +127,7 @@ def voltarMenu():
 
         except (AssertionError, IndexError):
             print('\nOpção inválida! Informe "SIM" ou "NÃO".')
+
 
 def validar_professor(lista_professores):
     while True:
@@ -150,14 +139,14 @@ def validar_professor(lista_professores):
                 if matricula == lista_professores[i].matricula:
                     print("Já existe um professor cadastrado com essa matricula!")
                     condicao = True
-                    break 
+                    break
             if condicao == True:
                 break
             nome = input('\nInforme o nome do professor: ').strip().capitalize()
             assert len(nome) >= 1
             data = input('\nInforme a data de nascimento do professor (DD/MM/AAAA): ')
             data_nascimento = date(int(data[6:]), int(data[3:5]), int(data[:2]))
-            professor = Classe.Professor(nome,matricula,data_nascimento)
+            professor = Classe.Professor(nome, matricula, data_nascimento)
             lista_professores.append(professor)
             print("Professor cadastrado com sucesso!")
             break
@@ -166,8 +155,9 @@ def validar_professor(lista_professores):
             if voltar.casefold() == 's':
                 break
 
+
 def validar_aluno(lista_alunos):
-     while True:
+    while True:
         try:
             condicao = ''
             matricula = input('\nInforme a matrícula do aluno: ')
@@ -183,15 +173,16 @@ def validar_aluno(lista_alunos):
             assert len(nome) >= 1
             data = input('\nInforme a data de nascimento do aluno (DD/MM/AAAA): ')
             data_nascimento = date(int(data[6:]), int(data[3:5]), int(data[:2]))
-            aluno = Classe.Aluno(nome,matricula,data_nascimento)
+            aluno = Classe.Aluno(nome, matricula, data_nascimento)
             lista_alunos.append(aluno)
             print("Aluno cadastrado com sucesso!")
-            break 
+            break
             break
         except (AssertionError, ValueError):
             voltar = voltarMenu()
             if voltar.casefold() == 's':
                 break
+
 
 def validar_disciplina(lista_disciplinas):
     while True:
@@ -210,14 +201,15 @@ def validar_disciplina(lista_disciplinas):
             assert len(nome) >= 1
             matricula_professor = input('\nInforme a matrícula do professor: ')
             assert matricula_professor.isnumeric()
-            disciplina = Classe.Disciplina(codigo,nome,matricula_professor)
+            disciplina = Classe.Disciplina(codigo, nome, matricula_professor)
             lista_disciplinas.append(disciplina)
             print('\nDisciplina cadastrada.')
-            break  
+            break
         except AssertionError:
             voltar = voltarMenu()
             if voltar.casefold() == 's':
                 break
+
 
 def validar_nota(lista_notas):
     while True:
@@ -228,7 +220,8 @@ def validar_nota(lista_notas):
             matricula_aluno = str(input('\nInforme a matrícula do aluno: '))
             assert matricula_aluno.isnumeric()
             for i in range(len(lista_notas)):
-                if (codigo_disciplina,matricula_aluno) == (lista_notas[i].codigo_disciplina,lista_notas[i].matricula_aluno):
+                if (codigo_disciplina, matricula_aluno) == (
+                lista_notas[i].codigo_disciplina, lista_notas[i].matricula_aluno):
                     print("Este aluno já está cadastrado!")
                     condicao = True
                     break
@@ -239,7 +232,7 @@ def validar_nota(lista_notas):
             nota2 = float(input('\nInforme a segunda nota: '))
             assert 0 <= nota2 <= 10
             print('\nNotas cadastradas.')
-            nota = Classe.Nota(str(codigo_disciplina),str(matricula_aluno),nota1,nota2)
+            nota = Classe.Nota(str(codigo_disciplina), str(matricula_aluno), nota1, nota2)
             lista_notas.append(nota)
             break
         except (AssertionError, ValueError):
@@ -247,23 +240,24 @@ def validar_nota(lista_notas):
             if voltar.casefold() == 's':
                 break
 
+
 def criarDataFrame():
     df = pd.DataFrame(columns=['Nome', 'CPF', 'Data de Nascimento'])  # Dataframe Proprietário
     df2 = pd.DataFrame(columns=['Codigo', 'CPF do proprietário', 'Tipo', 'Endereço', 'Valor do Aluguel', 'Status Alugado'])  # Dataframe Imóvel
     df3 = pd.DataFrame(columns=['Nome', 'CPF', 'Data de Nascimento'])  # Dataframe Inquilino
     df4 = pd.DataFrame(columns=['Codigo da Disciplina', 'Matrícula do aluno', 'Nota 1', 'Nota 2'])  # Dataframe Notas
     excel_writer = pd.ExcelWriter("Dados.xlsx")
-    df.to_excel(excel_writer,'Professores', index=False)
-    df2.to_excel(excel_writer,'Alunos', index=False)
-    df3.to_excel(excel_writer,'Disciplinas', index=False)
-    df4.to_excel(excel_writer,'Notas', index=False)
+    df.to_excel(excel_writer, 'Professores', index=False)
+    df2.to_excel(excel_writer, 'Alunos', index=False)
+    df3.to_excel(excel_writer, 'Disciplinas', index=False)
+    df4.to_excel(excel_writer, 'Notas', index=False)
     excel_writer.save()
 
 
 def salvarDataframe(lista_de_professores, lista_de_alunos, lista_de_disciplinas, lista_de_notas):
     excel_writer = pd.ExcelWriter('Dados.xlsx')
     i = 0
-    dados_professor = pd.read_excel('Dados.xlsx','Professores')
+    dados_professor = pd.read_excel('Dados.xlsx', 'Professores')
     for professor in lista_de_professores:
         linha = [professor.nome, str(professor.matricula), professor.data_nascimento]
         dados_professor.loc[i] = linha
@@ -271,15 +265,15 @@ def salvarDataframe(lista_de_professores, lista_de_alunos, lista_de_disciplinas,
     dados_professor.to_excel(excel_writer, 'Professores', index=False)
 
     i = 0
-    dados_alunos = pd.read_excel('Dados.xlsx','Alunos')
+    dados_alunos = pd.read_excel('Dados.xlsx', 'Alunos')
     for aluno in lista_de_alunos:
         linha = [aluno.nome, str(aluno.matricula), aluno.data_nascimento]
         dados_alunos.loc[i] = linha
         i += 1
-    dados_alunos.to_excel(excel_writer,'Alunos', index=False)
+    dados_alunos.to_excel(excel_writer, 'Alunos', index=False)
 
     i = 0
-    dados_disciplinas = pd.read_excel('Dados.xlsx','Disciplinas')
+    dados_disciplinas = pd.read_excel('Dados.xlsx', 'Disciplinas')
     for disciplina in lista_de_disciplinas:
         linha = [str(disciplina.codigo), disciplina.nome, str(disciplina.matricula_professor)]
         dados_disciplinas.loc[i] = linha
@@ -287,7 +281,7 @@ def salvarDataframe(lista_de_professores, lista_de_alunos, lista_de_disciplinas,
     dados_disciplinas.to_excel(excel_writer, 'Disciplinas', index=False)
 
     i = 0
-    dados_notas = pd.read_excel('Dados.xlsx','Notas')
+    dados_notas = pd.read_excel('Dados.xlsx', 'Notas')
     for nota in lista_de_notas:
         linha = [str(nota.codigo_disciplina), str(nota.matricula_aluno), float(nota.nota1), float(nota.nota2)]
         dados_notas.loc[i] = linha
@@ -299,7 +293,7 @@ def salvarDataframe(lista_de_professores, lista_de_alunos, lista_de_disciplinas,
 def getDataFramefromExcel(lista_de_professores, lista_de_alunos, lista_de_disciplinas,
                           lista_de_notas):
     # Professor
-    dados = pd.read_excel('Dados.xlsx','Professores')
+    dados = pd.read_excel('Dados.xlsx', 'Professores')
     for i in range(len(dados)):
         nome = dados.loc[i][0]
         matricula = dados.loc[i][1]
@@ -307,7 +301,7 @@ def getDataFramefromExcel(lista_de_professores, lista_de_alunos, lista_de_discip
         professor = Classe.Professor(nome, str(matricula), data_nascimento)
         lista_de_professores.append(professor)
     # Aluno
-    dados = pd.read_excel('Dados.xlsx','Alunos')
+    dados = pd.read_excel('Dados.xlsx', 'Alunos')
     for i in range(len(dados)):
         nome = dados.loc[i][0]
         matricula = dados.loc[i][1]
@@ -315,7 +309,7 @@ def getDataFramefromExcel(lista_de_professores, lista_de_alunos, lista_de_discip
         aluno = Classe.Aluno(nome, str(matricula), data_nascimento)
         lista_de_alunos.append(aluno)
     # Disciplina
-    dados = pd.read_excel('Dados.xlsx','Disciplinas')
+    dados = pd.read_excel('Dados.xlsx', 'Disciplinas')
     for i in range(len(dados)):
         codigo = int(dados.loc[i][0])
         nome = str(dados.loc[i][1])
@@ -323,7 +317,7 @@ def getDataFramefromExcel(lista_de_professores, lista_de_alunos, lista_de_discip
         disciplina = Classe.Disciplina(int(codigo), nome, str(matricula_professor))
         lista_de_disciplinas.append(disciplina)
     # Notas
-    dados = pd.read_excel('Dados.xlsx','Notas')
+    dados = pd.read_excel('Dados.xlsx', 'Notas')
     for i in range(len(dados)):
         codigo_da_disciplina = dados.loc[i][0]
         matricula_aluno = dados.loc[i][1]
