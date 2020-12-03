@@ -1,4 +1,4 @@
-from Classe import Professor, Aluno, Disciplina, Nota
+from Classes import Proprietario, Imovel, Inquilino, Aluguel
 from Funcao import buscarDisciplina, buscarProfessor, voltarMenu, criarDataFrame, \
     salvarDataframe, getDataFramefromExcel, validar_professor, validar_aluno, validar_disciplina, validar_nota
 
@@ -9,10 +9,10 @@ except IOError:
     print('Criando novos arquivos...')
     criarDataFrame()
 
-listaProf = []
-listaAluno = []
-listaDisc = []
-listaNota = []
+listaProp = []
+listaImovel = []
+listaInquilino = []
+lista = []
 notas = []
 alunos = []
 
@@ -35,7 +35,7 @@ while True:
     escolha = input('Escolha uma das opções acima: ')
 
     if escolha == '0':
-        salvarDataframe(listaProf, listaAluno, listaDisc, listaNota)
+        salvarDataframe()
         print('\nFim do programa.')
         break
 
@@ -52,25 +52,7 @@ while True:
         validar_nota(listaNota)
 
     elif escolha == '5':
-        while True:
-            try:
-                buscaDisc = input('\nInforme o código da Disciplina: ')
-
-                disc = buscarDisciplina(buscaDisc, listaDisc)
-                assert disc is not False
-                prof = buscarProfessor(disc, listaProf)
-                print(listaNota[0].codigo_disciplina)
-                for i in range(len(listaNota)):
-                    if listaNota[i].codigo_disciplina == disc.codigo:
-                        notas.append(listaNota[i])
-                Disciplina.relatorioNotas(disc, prof, notas)
-                notas = []
-                break
-
-            except AssertionError:
-                voltar = voltarMenu()
-                if voltar.casefold() == 's':
-                    break
+        pass
 
     else:
         print('\nOpção invalida! Digite novamente.')
