@@ -1,5 +1,5 @@
 # Definições das classes!
-class Proprietario():
+class Proprietario:
     proprietarios = []
 
     def __init__(self, nome, cpf, data_nascimento):
@@ -17,7 +17,7 @@ class Proprietario():
             return None
 
 
-class Imovel():
+class Imovel:
     imoveis = []
 
     def __init__(self, codigo, cpf, tipo, endereco, valor_do_aluguel, status):
@@ -43,7 +43,7 @@ class Imovel():
         imovel.status = 'SIM'
 
 
-class Inquilino():
+class Inquilino:
     inquilinos = []
 
     def __init__(self, nome, cpf, data_de_nascimento):
@@ -61,7 +61,7 @@ class Inquilino():
         return None
 
 
-class Aluguel():
+class Aluguel:
     alugueis = []
 
     def __init__(self, cpf_inquilino, codigo_imovel, data_inicio, data_final):
@@ -69,6 +69,7 @@ class Aluguel():
         self.codigo_imovel = codigo_imovel
         self.data_inicio = data_inicio
         self.data_final = data_final
+
         if Aluguel.procurar(cpf_inquilino) is None:
             Aluguel.alugueis.append(self)
 
