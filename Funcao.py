@@ -3,6 +3,119 @@ from datetime import date
 import Classe
 
 
+def cadastrarProprietario():
+    while True:
+        try:
+            nome = input('\nInforme o nome do proprietário: ').strip().capitalize()
+            assert len(nome) >= 1
+
+            # for i in range(len(lista_professores)):
+            #     if matricula == lista_professores[i].matricula:
+            #         print("Já existe um professor cadastrado com essa matricula!")
+            #         condicao = True
+            #         break 
+            # if condicao == True:
+            #     break
+
+            cpf = input('\nInforme o CPF do propritário (apenas números): ')
+            assert cpf.isnumeric()
+            data = input('\nInforme a data de nascimento do proprietário (DD/MM/AAAA): ')
+            data_nascimento = date(int(data[6:]), int(data[3:5]), int(data[:2]))
+
+            # professor = Classe.Professor(nome,matricula,data_nascimento)
+            # lista_professores.append(professor)
+
+            print('Proprietário cadastrado com sucesso!')
+            break
+
+        except (AssertionError, ValueError):
+            voltar = voltarMenu()
+            if voltar.casefold() == 's':
+                break
+
+
+def cadastrarImovel():
+    while True:
+        try:
+            codigo = input('\nInforme o código do inquilino: ')
+            assert codigo.isnumeric()
+
+            # for i in range(len(lista_professores)):
+            #     if matricula == lista_professores[i].matricula:
+            #         print("Já existe um professor cadastrado com essa matricula!")
+            #         condicao = True
+            #         break 
+            # if condicao == True:
+            #     break
+
+            cpf_prop = input('\nInforme o CPF do proprietário (apenas números): ')
+            assert cpf_prop.isnumeric()
+
+            print('\n1 - Casa\n'
+                    '2 - Apartamento')
+
+            escolha = input('\nInforme o tipo do imóvel a partir das opções acima: ')
+
+            if escolha == '1':
+                self.tipo = 'Casa'
+            elif escolha == '2':
+                self.tipo = 'Apartamento'
+            else:
+                raise OverflowError
+
+
+            endereco = input('\nInforme o endereço do imóvel: ')
+            assert len(endereco) >= 1
+
+            valor = input('\nInforme o valor do aluguel: ')
+
+            data = input('\nInforme a data de nascimento do proprietário (DD/MM/AAAA): ')
+            data_nascimento = date(int(data[6:]), int(data[3:5]), int(data[:2]))
+
+            # professor = Classe.Professor(nome,matricula,data_nascimento)
+            # lista_professores.append(professor)
+
+            print('Imóvel cadastrado com sucesso!')
+            break
+        
+        except (AssertionError, ValueError, OverflowError):
+            voltar = voltarMenu()
+            if voltar.casefold() == 's':
+                break
+
+
+def cadastrarInquilino():
+    while True:
+        try:
+            nome = input('\nInforme o nome do inquilino: ').strip().capitalize()
+            assert len(nome) >= 1
+
+            # for i in range(len(lista_professores)):
+            #     if matricula == lista_professores[i].matricula:
+            #         print("Já existe um professor cadastrado com essa matricula!")
+            #         condicao = True
+            #         break 
+            # if condicao == True:
+            #     break
+
+            cpf = input('\nInforme o CPF do inquilino (apenas números): ')
+            assert cpf.isnumeric()
+            data = input('\nInforme a data de nascimento do proprietário (DD/MM/AAAA): ')
+            data_nascimento = date(int(data[6:]), int(data[3:5]), int(data[:2]))
+
+            # professor = Classe.Professor(nome,matricula,data_nascimento)
+            # lista_professores.append(professor)
+
+            print('Inquilino cadastrado com sucesso!')
+            break
+        
+        except (AssertionError, ValueError):
+            voltar = voltarMenu()
+            if voltar.casefold() == 's':
+                break
+
+
+
 def buscarDisciplina(busca, listaDisc):
     for i in range(len(listaDisc)):
         if listaDisc[i].codigo == busca:
