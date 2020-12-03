@@ -20,11 +20,16 @@ getDataFramefromExcel(listaProf, listaAluno, listaDisc, listaNota)
 
 while True:
     print('\nMenu da Escola\n\n'
-          '1 - Cadastro de Professores\n'
-          '2 - Cadastro de Alunos\n'
-          '3 - Cadastro de Disciplinas\n'
-          '4 - Cadastro de Notas\n'
-          '5 - Relatório de Notas\n'
+          '1 - Cadastrar Proprietário\n'
+          '2 - Cadastrar Imóvel\n'
+          '3 - Cadastrar Inquilino\n'
+          '4 - Registrar Aluguel\n'
+          '5 - Finalizar Aluguel\n'
+          '6 - Relatório de Proprietários\n'
+          '7 - Relatório de Imóveis\n'
+          '8 - Relatório de Inquilinos\n'
+          '9 - Relatório de Aluguéis\n'
+          '10 - Relatório de Comissões\n'
           '0 - Sair\n')
 
     escolha = input('Escolha uma das opções acima: ')
