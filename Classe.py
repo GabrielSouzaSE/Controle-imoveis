@@ -2,18 +2,18 @@ from datetime import date
 from Funcao import voltarMenu
 
 
-class Professor:
+class Propritario:
     nome = ''
-    matricula = ''
+    cpf = ''
     data_nascimento = date
 
-    def __init__(self, nome=nome, matricula=matricula, data_nascimento=data_nascimento):
+    def __init__(self, nome=nome, cpf=cpf, data_nascimento=data_nascimento):
 
-        if nome == '' and matricula == '':
+        if nome == '' and cpf == '':
             while True:
                 try:
-                    self.matricula = input('\nInforme a matrícula do professor: ')
-                    assert self.matricula.isnumeric()
+                    self.cpf = input('\nInforme a matrícula do professor: ')
+                    assert self.cpf.isnumeric()
 
                     self.nome = input('\nInforme o nome do professor: ').strip().capitalize()
                     assert len(self.nome) >= 1
