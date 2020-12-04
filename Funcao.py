@@ -1,4 +1,4 @@
-import pandas as pd
+# import pandas as pd
 from datetime import date
 from Classes import Proprietario, Imovel, Inquilino, Aluguel
 
