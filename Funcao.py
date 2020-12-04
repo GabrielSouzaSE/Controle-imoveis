@@ -165,9 +165,28 @@ def relatorio_proprietarios():
     if len(Proprietario.proprietarios) >= 1:
         print("Lista dos Proprietários: ")
         for proprietario in Proprietario.proprietarios:
-            print(f"Nome: {proprietario.nome} Cpf: {proprietario.cpf} Data de Nascimento {proprietario.data_nascimento}")
+            print(f"Nome: {proprietario.nome} Cpf: {proprietario.cpf} Data de Nascimento: {proprietario.data_nascimento}")
     else:
         print("Não tem proprietário no nosso banco de dados!")
+
+def relatorio_imoveis():
+    if len(Imovel.imoveis) >= 1:
+        print("Lista de Imoveis:")
+        for imovel in Imovel.imoveis:
+            proprietario = Proprietario.procurar(imovel.cpf)
+            print(f"Código: {imovel.codigo} Cpf: {proprietario.cpf} Nome do Proprietário: {proprietario.nome} Tipo: {imovel.tipo} Endereço: {imovel.endereco} Valor do Aluguel: {imovel.valor_do_aluguel} Status Alugado: {imovel.status}")
+    else:
+        print("Não tem Imóveis no nosso banco de dados! ")
+
+
+def relatorio_inquilinos():
+    if len(Inquilino.inquilinos) >= 1:
+        print("Lista dos Inquilinos:")
+        for Inquilino in Inquilino.inquilinos:
+            print(f"Nome: {Inquilino.nome} Cpf: {Inquilino.cpf} Data de Nascimento: {Inquilino.data_nascimento}")
+    else:
+        print("Não tem Imóveis no nosso banco de dados! ")
+
 
 # def criarDataFrame():
 #     df = pd.DataFrame(columns=['Nome', 'CPF', 'Data de Nascimento'])  # Dataframe Proprietário
