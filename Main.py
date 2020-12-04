@@ -1,5 +1,6 @@
 from Classes import Proprietario, Imovel, Inquilino, Aluguel
 from Funcao import cadastrarProprietario, cadastrarImovel, cadastrarInquilino, registrarAluguel, finalizarAluguel
+from Funcao import voltarMenu, criarDataFrame, salvarDataframe, getDataFramefromExcel, cadastrarProprietario, cadastrarImovel, cadastrarInquilino, RegistrarAluguel
 
 # try:
 #     open('Dados.xlsx', 'r')
@@ -46,5 +47,20 @@ while True:
     elif escolha == '5':
         finalizarAluguel()
 
+    elif escolha == '6':
+        pass
+
+    elif escolha == '7':
+        pass
+    
+    elif escolha == '8':
+        pass
+
+    elif escolha == '9':
+        pass
+
+    elif escolha == '10':
+        pass
+    
     else:
         print('\nOpção invalida! Digite novamente.')
