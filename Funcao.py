@@ -170,7 +170,7 @@ def relatorioProprietarios():
     else:
         print("Não tem proprietário no nosso banco de dados!")
 
-def relatorio_imoveis():
+def relatorioImoveis():
     if len(Imovel.imoveis) >= 1:
         print("Lista de Imoveis:")
         for imovel in Imovel.imoveis:
@@ -180,13 +180,13 @@ def relatorio_imoveis():
         print("Não tem Imóveis no nosso banco de dados! ")
 
 
-def relatorio_inquilinos():
+def relatorioInquilinos():
     if len(Inquilino.inquilinos) >= 1:
         print("Lista dos Inquilinos:")
         for Inquilino in Inquilino.inquilinos:
             print(f"Nome: {Inquilino.nome} Cpf: {Inquilino.cpf} Data de Nascimento: {Inquilino.data_nascimento}")
     else:
-        print("Não tem Imóveis no nosso banco de dados! ")
+        print("Não tem Inquilinos no nosso banco de dados! ")
 
 
 # def criarDataFrame():
