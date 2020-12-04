@@ -1,5 +1,5 @@
 from Funcao import cadastrarProprietario, cadastrarImovel, cadastrarInquilino, registrarAluguel, finalizarAluguel,\
-                   relatorioProprietarios
+                   relatorioProprietarios, relatorioImoveis, relatorioInquilinos
 
 # try:
 #     open('Dados.xlsx', 'r')
@@ -54,10 +54,10 @@ while True:
         relatorioProprietarios()
 
     elif escolha == '7':
-        pass
+        relatorioImoveis()
     
     elif escolha == '8':
-        pass
+        relatorioInquilinos()
 
     elif escolha == '9':
         pass
