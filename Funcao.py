@@ -136,6 +136,13 @@ def voltarMenu():
         except (AssertionError, IndexError):
             print('\nOpção inválida! Informe "SIM" ou "NÃO".')
 
+def relatorio_proprietarios():
+    if len(Proprietario.proprietarios) >= 1:
+        print("Lista dos Proprietários: ")
+        for proprietario in Proprietario.proprietarios:
+            print(f"Nome: {proprietario.nome} Cpf: {proprietario.cpf} Data de Nascimento {proprietario.data_nascimento}")
+    else:
+        print("Não tem proprietário no nosso banco de dados!")
 
 # def criarDataFrame():
 #     df = pd.DataFrame(columns=['Nome', 'CPF', 'Data de Nascimento'])  # Dataframe Proprietário
