@@ -161,7 +161,8 @@ def voltarMenu():
         except (AssertionError, IndexError):
             print('\nOpção inválida! Informe "SIM" ou "NÃO".')
 
-def relatorio_proprietarios():
+
+def relatorioProprietarios():
     if len(Proprietario.proprietarios) >= 1:
         print("Lista dos Proprietários: ")
         for proprietario in Proprietario.proprietarios:
