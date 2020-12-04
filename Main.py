@@ -1,4 +1,3 @@
-from Classes import Proprietario, Imovel, Inquilino, Aluguel
 from Funcao import cadastrarProprietario, cadastrarImovel, cadastrarInquilino, registrarAluguel, finalizarAluguel
 
 # try:
