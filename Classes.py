@@ -6,6 +6,7 @@ class Proprietario:
         self.nome = nome
         self.cpf = cpf
         self.data_nascimento = data_nascimento
+
         if Proprietario.procurar(cpf) is None:
             Proprietario.proprietarios.append(self)
 

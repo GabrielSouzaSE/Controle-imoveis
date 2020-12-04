@@ -15,7 +15,7 @@ def cadastrarProprietario():
             data = input('\nInforme a data de nascimento do proprietário (DD/MM/AAAA): ')
             data_nascimento = date(int(data[6:]), int(data[3:5]), int(data[:2]))
 
-            print('Proprietário cadastrado com sucesso!')
+            print('\nProprietário cadastrado com sucesso!')
             # Proprietario(nome, cpf, data)
             break
 
@@ -50,11 +50,8 @@ def cadastrarImovel():
             assert len(endereco) >= 1
 
             valor = float(input('\nInforme o valor do aluguel: '))
-
-            data = input('\nInforme a data de nascimento do proprietário (DD/MM/AAAA): ')
-            data_nascimento = date(int(data[6:]), int(data[3:5]), int(data[:2]))
-
-            print('Imóvel cadastrado com sucesso!')
+            
+            print('\nImóvel cadastrado com sucesso!')
             break
 
         except (AssertionError, ValueError, OverflowError):
@@ -75,7 +72,7 @@ def cadastrarInquilino():
             data = input('\nInforme a data de nascimento do proprietário (DD/MM/AAAA): ')
             data_nascimento = date(int(data[6:]), int(data[3:5]), int(data[:2]))
 
-            print('Inquilino cadastrado com sucesso!')
+            print('\nInquilino cadastrado com sucesso!')
             break
 
         except (AssertionError, ValueError):
@@ -96,7 +93,7 @@ def registrarAluguel():
             data_inicio = input('\nInforme a data de início do aluguel (DD/MM/AAAA): ')
             data_inicio = date(int(data_inicio[6:]), int(data_inicio[3:5]), int(data_inicio[:2]))
 
-            print('Aluguel registrado com sucesso!')
+            print('\nAluguel registrado com sucesso!')
             break
 
         except (AssertionError, ValueError):
@@ -117,27 +114,13 @@ def finalizarAluguel():
             data_fim = input('\nInforme a data de início do aluguel (DD/MM/AAAA): ')
             data_fim = date(int(data_fim[6:]), int(data_fim[3:5]), int(data_fim[:2]))
 
-            print('Aluguel finalizado com sucesso!')
+            print('\nAluguel finalizado com sucesso!')
             break
 
         except (AssertionError, ValueError):
             voltar = voltarMenu()
             if voltar.casefold() == 's':
                 break
-
-
-def buscarDisciplina(busca, listaDisc):
-    for i in range(len(listaDisc)):
-        if listaDisc[i].codigo == busca:
-            return listaDisc[i]
-
-    return False
-
-
-def buscarProfessor(disciplina, listaProf):
-    for i in range(len(listaProf)):
-        if str(listaProf[i].matricula) == str(disciplina.matricula_professor):
-            return listaProf[i]
 
 
 def voltarMenu():
