@@ -189,7 +189,7 @@ def relatorioInquilinos():
         for Inquilino in Inquilino.inquilinos:
             print(f"Nome: {Inquilino.nome} Cpf: {Inquilino.cpf} Data de Nascimento: {Inquilino.data_nascimento}")
     else:
-        print("Não tem Imóveis no nosso banco de dados! ")
+        print("Não tem Inquilinos no nosso banco de dados! ")
 
 
 # def criarDataFrame():
