@@ -1,6 +1,6 @@
 # import pandas as pd
 from datetime import date
-import Classes
+from Classes import Proprietario
 
 
 def cadastrarProprietario():
@@ -16,6 +16,7 @@ def cadastrarProprietario():
             data_nascimento = date(int(data[6:]), int(data[3:5]), int(data[:2]))
 
             print('Proprietário cadastrado com sucesso!')
+            # Proprietario(nome, cpf, data)
             break
 
         except (AssertionError, ValueError):
