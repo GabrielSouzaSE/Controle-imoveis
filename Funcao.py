@@ -39,7 +39,7 @@ def cadastrarImovel():
 
             cpf_prop = input('\nInforme o CPF do proprietário (apenas números): ')
             assert cpf_prop.isnumeric()
-            if Imovel.procurar(cpf_prop) is None:
+            if Proprietario.procurar(cpf_prop) is None:
                 print('\nO CPF não está cadastrado no nosso banco de dados!')
                 raise AssertionError
 
@@ -82,7 +82,7 @@ def cadastrarInquilino():
                 print('\nO CPF já está cadastrado no nosso banco de dados!')
                 raise AssertionError
 
-            data = input('\nInforme a data de nascimento do proprietário (DD/MM/AAAA): ')
+            data = input('\nInforme a data de nascimento do inquilino (DD/MM/AAAA): ')
             data = date(int(data[6:]), int(data[3:5]), int(data[:2]))
 
             print('\nInquilino cadastrado com sucesso!')
@@ -100,13 +100,13 @@ def registrarAluguel():
         try:
             cpf_inqui = input('\nInforme o CPF do inquilino (apenas números): ')
             assert cpf_inqui.isnumeric()
-            if Aluguel.procurar(cpf_inqui) is None:
+            if Inquilino.procurar(cpf_inqui) is None:
                 print('\nO CPF não está cadastrado no nosso banco de dados!')
                 raise AssertionError
 
             codigo_imovel = input('\nInforme o código do imóvel: ')
             assert codigo_imovel.isnumeric()
-            if Aluguel.procurar(cpf) is None:
+            if Imovel.procurar(cpf) is None:
                 print('\nO código do imóvel não está cadastrado no nosso banco de dados!')
                 raise AssertionError
 
@@ -128,13 +128,13 @@ def finalizarAluguel():
         try:
             cpf_inqui = input('\nInforme o CPF do inquilino (apenas números): ')
             assert cpf_inqui.isnumeric()
-            if Aluguel.procurar(cpf_inqui) is None:
+            if Inquilino.procurar(cpf_inqui) is None:
                 print('\nO CPF não está cadastrado no nosso banco de dados!')
                 raise AssertionError
 
             codigo_imovel = input('\nInforme o código do imóvel: ')
             assert codigo_imovel.isnumeric()
-            if Aluguel.procurar(codigo_imovel) is None:
+            if Imovel.procurar(codigo_imovel) is None:
                 print('\nO código do imóvel não está cadastrado no nosso banco de dados!')
                 raise AssertionError
 
@@ -161,7 +161,8 @@ def voltarMenu():
         except (AssertionError, IndexError):
             print('\nOpção inválida! Informe "SIM" ou "NÃO".')
 
-def relatorio_proprietarios():
+
+def relatorioProprietarios():
     if len(Proprietario.proprietarios) >= 1:
         print("Lista dos Proprietários: ")
         for proprietario in Proprietario.proprietarios:

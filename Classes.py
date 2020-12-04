@@ -40,7 +40,7 @@ class Imovel:
             return None
 
     @staticmethod
-    def modificar_status(imovel,status):
+    def modificar_status(imovel, status):
         imovel.status = status
 
 
@@ -51,6 +51,7 @@ class Inquilino:
         self.nome = nome
         self.cpf = cpf
         self.data_de_nascimento = data_de_nascimento
+
         if Inquilino.procurar(cpf) is None:
             Inquilino.inquilinos.append(self)
 

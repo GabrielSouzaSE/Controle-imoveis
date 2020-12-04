@@ -1,4 +1,5 @@
-from Funcao import cadastrarProprietario, cadastrarImovel, cadastrarInquilino, registrarAluguel, finalizarAluguel
+from Funcao import cadastrarProprietario, cadastrarImovel, cadastrarInquilino, registrarAluguel, finalizarAluguel,\
+                   relatorioProprietarios
 
 # try:
 #     open('Dados.xlsx', 'r')
@@ -50,7 +51,7 @@ while True:
         finalizarAluguel()
 
     elif escolha == '6':
-        pass
+        relatorioProprietarios()
 
     elif escolha == '7':
         pass
