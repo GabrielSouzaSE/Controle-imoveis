@@ -1,6 +1,5 @@
 from Classes import Proprietario, Imovel, Inquilino, Aluguel
 from Funcao import cadastrarProprietario, cadastrarImovel, cadastrarInquilino, registrarAluguel, finalizarAluguel
-from Funcao import voltarMenu, criarDataFrame, salvarDataframe, getDataFramefromExcel, cadastrarProprietario, cadastrarImovel, cadastrarInquilino, RegistrarAluguel
 
 # try:
 #     open('Dados.xlsx', 'r')
