@@ -1,6 +1,5 @@
 from Classes import Proprietario, Imovel, Inquilino, Aluguel
-from Funcao import buscarDisciplina, buscarProfessor, voltarMenu, criarDataFrame, \
-    salvarDataframe, getDataFramefromExcel, validar_professor, validar_aluno, validar_disciplina, validar_nota
+from Funcao import voltarMenu, criarDataFrame, salvarDataframe, getDataFramefromExcel, cadastrarProprietario, cadastrarImovel, cadastrarInquilino, RegistrarAluguel
 
 try:
     open('Dados.xlsx', 'r')
@@ -9,14 +8,7 @@ except IOError:
     print('Criando novos arquivos...')
     criarDataFrame()
 
-listaProp = []
-listaImovel = []
-listaInquilino = []
-lista = []
-notas = []
-alunos = []
-
-getDataFramefromExcel(listaProf, listaAluno, listaDisc, listaNota)
+# getDataFramefromExcel(listaProf, listaAluno, listaDisc, listaNota)
 
 while True:
     print('\nMenu de Imvel\n\n'
@@ -40,19 +32,34 @@ while True:
         break
 
     elif escolha == '1':
-        validar_professor(listaProf)
+        cadastrarProprietario()
 
     elif escolha == '2':
-        validar_aluno(listaAluno)
+        cadastrarImovel()
 
     elif escolha == '3':
-        validar_disciplina(listaDisc)
+        cadastrarInquilino()
 
     elif escolha == '4':
-        validar_nota(listaNota)
+        RegistrarAluguel()
 
     elif escolha == '5':
         pass
 
+    elif escolha == '6':
+        pass
+
+    elif escolha == '7':
+        pass
+    
+    elif escolha == '8':
+        pass
+
+    elif escolha == '9':
+        pass
+
+    elif escolha == '10':
+        pass
+    
     else:
         print('\nOpção invalida! Digite novamente.')
