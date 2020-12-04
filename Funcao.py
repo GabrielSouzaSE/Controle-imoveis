@@ -114,6 +114,8 @@ def registrarAluguel():
             data_inicio = date(int(data_inicio[6:]), int(data_inicio[3:5]), int(data_inicio[:2]))
 
             print('\nAluguel registrado com sucesso!')
+            imovel = Imovel.procurar(codigo_imovel)
+            Imovel.modificar_status(imovel,'Sim')
             Aluguel(cpf_inqui, codigo_imovel, data_inicio)
             break
 
@@ -138,11 +140,14 @@ def finalizarAluguel():
                 print('\nO código do imóvel não está cadastrado no nosso banco de dados!')
                 raise AssertionError
 
-            data_fim = input('\nInforme a data de início do aluguel (DD/MM/AAAA): ')
+            data_fim = input('\nInforme a data de final do aluguel (DD/MM/AAAA): ')
             data_fim = date(int(data_fim[6:]), int(data_fim[3:5]), int(data_fim[:2]))
 
             print('\nAluguel finalizado com sucesso!')
-            Aluguel(cpf_inqui, codigo_imovel, data_fim)
+            imovel = Imovel.procurar(codigo_imovel)
+            Imovel.modificar_status(imovel,'Não')
+            aluguel = Aluguel.procurar(cpf_inqui)
+            Aluguel.adicionar_fim_aluguel(aluguel,data_fim)
             break
 
         except (AssertionError, ValueError):

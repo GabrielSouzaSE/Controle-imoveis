@@ -65,10 +65,9 @@ class Inquilino:
 
 class Aluguel:
     alugueis = []
-    data_inicio = 'Sem data'
     data_final = 'Sem data'
 
-    def __init__(self, cpf_inquilino, codigo_imovel, data_inicio=data_inicio, data_final=data_final):
+    def __init__(self, cpf_inquilino, codigo_imovel, data_inicio, data_final=data_final):
         self.cpf_inquilino = cpf_inquilino
         self.codigo_imovel = codigo_imovel
         self.data_inicio = data_inicio
@@ -83,3 +82,7 @@ class Aluguel:
             if aluguel.cpf_inquilino == cpf_inquilino:
                 return aluguel
             return None
+    
+    @staticmethod
+    def adicionar_fim_aluguel(aluguel,data_final):
+        aluguel.data_final = data_final
