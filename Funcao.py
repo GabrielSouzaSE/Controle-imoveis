@@ -1,6 +1,6 @@
 import pandas as pd
 from datetime import date
-from Classes import Proprietario
+from Classes import Proprietario, Imovel, Inquilino, Aluguel
 
 
 def cadastrarProprietario():
@@ -9,17 +9,17 @@ def cadastrarProprietario():
             nome = input('\nInforme o nome do proprietário: ').strip().capitalize()
             assert len(nome) >= 1
 
-            cpf = input('\nInforme o CPF do propritário (apenas números): ')
+            cpf = input('\nInforme o CPF do proprietário (apenas números): ')
             assert cpf.isnumeric()
             if Proprietario.procurar(cpf) is not None:
-                print("O CPF já está cadastrado no nosso banco de dados!")
+                print('\nO CPF já está cadastrado no nosso banco de dados!')
                 raise AssertionError
 
             data = input('\nInforme a data de nascimento do proprietário (DD/MM/AAAA): ')
-            data_nascimento = date(int(data[6:]), int(data[3:5]), int(data[:2]))
+            data = date(int(data[6:]), int(data[3:5]), int(data[:2]))
 
             print('\nProprietário cadastrado com sucesso!')
-            # Proprietario(nome, cpf, data)
+            Proprietario(nome, cpf, data)
             break
 
         except (AssertionError, ValueError):
@@ -34,7 +34,7 @@ def cadastrarImovel():
             codigo = input('\nInforme o código do imóvel: ')
             assert codigo.isnumeric()
             if Imovel.procurar(codigo) is not None:
-                print("O código do imóvel já está cadastrado no nosso banco de dados!")
+                print('\nO código do imóvel já está cadastrado no nosso banco de dados!')
                 raise AssertionError
 
             cpf_prop = input('\nInforme o CPF do proprietário (apenas números): ')
@@ -53,7 +53,7 @@ def cadastrarImovel():
             elif escolha == '2':
                 tipo = 'Apartamento'
             else:
-                raise OverflowError
+                raise AssertionError
 
             endereco = input('\nInforme o endereço do imóvel: ')
             assert len(endereco) >= 1
@@ -61,9 +61,10 @@ def cadastrarImovel():
             valor = float(input('\nInforme o valor do aluguel: '))
             
             print('\nImóvel cadastrado com sucesso!')
+            Imovel(codigo, cpf_prop, tipo, endereco, valor)
             break
 
-        except (AssertionError, ValueError, OverflowError):
+        except (AssertionError, ValueError):
             voltar = voltarMenu()
             if voltar.casefold() == 's':
                 break
@@ -78,13 +79,14 @@ def cadastrarInquilino():
             cpf = input('\nInforme o CPF do inquilino (apenas números): ')
             assert cpf.isnumeric()
             if Inquilino.procurar(cpf) is not None:
-                print("O CPF já está cadastrado no nosso banco de dados!")
+                print('\nO CPF já está cadastrado no nosso banco de dados!')
                 raise AssertionError
 
             data = input('\nInforme a data de nascimento do proprietário (DD/MM/AAAA): ')
-            data_nascimento = date(int(data[6:]), int(data[3:5]), int(data[:2]))
+            data = date(int(data[6:]), int(data[3:5]), int(data[:2]))
 
             print('\nInquilino cadastrado com sucesso!')
+            Inquilino(nome, cpf, data)
             break
 
         except (AssertionError, ValueError):
@@ -106,6 +108,7 @@ def registrarAluguel():
             data_inicio = date(int(data_inicio[6:]), int(data_inicio[3:5]), int(data_inicio[:2]))
 
             print('\nAluguel registrado com sucesso!')
+            Aluguel(cpf_inqui, codigo_imovel, data_inicio)
             break
 
         except (AssertionError, ValueError):
@@ -127,6 +130,7 @@ def finalizarAluguel():
             data_fim = date(int(data_fim[6:]), int(data_fim[3:5]), int(data_fim[:2]))
 
             print('\nAluguel finalizado com sucesso!')
+            Aluguel(cpf_inqui, codigo_imovel, data_fim)
             break
 
         except (AssertionError, ValueError):
