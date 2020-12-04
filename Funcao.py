@@ -86,7 +86,7 @@ def registrarAluguel():
         try:
             cpf_inqui = input('\nInforme o CPF do inquilino (apenas números): ')
             assert cpf_inqui.isnumeric()
-            
+
             codigo_imovel = input('\nInforme o código do imóvel: ')
             assert codigo_imovel.isnumeric()
 
