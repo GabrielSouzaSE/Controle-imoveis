@@ -40,8 +40,8 @@ class Imovel:
             return None
 
     @staticmethod
-    def modificar_status(imovel):
-        imovel.status = 'SIM'
+    def modificar_status(imovel,status):
+        imovel.status = status
 
 
 class Inquilino:
