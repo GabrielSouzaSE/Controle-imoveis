@@ -168,6 +168,7 @@ def voltarMenu():
 
 
 def relatorioProprietarios():
+    print()
     if len(Proprietario.proprietarios) >= 1:
         print("Lista dos Proprietários: ")
         for proprietario in Proprietario.proprietarios:
@@ -177,6 +178,7 @@ def relatorioProprietarios():
 
 
 def relatorioImoveis():
+    print()
     if len(Imovel.imoveis) >= 1:
         print("Lista de Imoveis:")
         for imovel in Imovel.imoveis:
@@ -189,9 +191,35 @@ def relatorioImoveis():
 
 
 def relatorioInquilinos():
+    print()
     if len(Inquilino.inquilinos) >=1:
         print("Lista de Inquilinos: ")
         for inquilino in Inquilino.inquilinos:
             print(f'Nome: {inquilino.nome} Cpf: {inquilino.cpf} Data de nascimento: {inquilino.data_de_nascimento} ')
     else:
         print("Não tem Inquilinos no nosso banco de dados!")
+
+def relatorioAluguel():
+    print()
+    if len(Aluguel.alugueis) >=1:
+        for aluguel in Aluguel.alugueis:
+            inquilino = Inquilino.procurar(aluguel.cpf_inquilino)
+            imovel = Imovel.procurar(aluguel.codigo_imovel)
+            proprietario = Proprietario.procurar(imovel.cpf)
+            print(f"Nome do inquilino: {inquilino.nome} ")
+            print(f"Imovel; codigo: {imovel.codigo} Tipo: {imovel.tipo} Endereço: {imovel.endereco} Proprietário: {proprietario.nome}")
+            if aluguel.data_final == 'Sem data':
+                print(f"Valor do Aluguel: {imovel.valor_do_aluguel} data do inicio do aluguel: {aluguel.data_inicio} ")
+            else:
+                print(f"Valor do Aluguel: {imovel.valor_do_aluguel} data do inicio do aluguel: {aluguel.data_inicio} data final: {aluguel.data_final} ")
+    else:
+        print("Não tem alugueis cadastrado no nosso banco de dados!")
+def relatorioComissao(data_atual): #relatorio_comissao python righ way
+    print()
+    if len(Aluguel.alugueis) >= 1:
+        for aluguel in Aluguel.alugueis:
+            imovel = Imovel.procurar(aluguel.codigo_imovel)
+            if aluguel.data_final == 'Sem data':
+                print(f'Valor do aluguel: {imovel.valor_do_aluguel}, Data do inicio do aluguel: {aluguel.data_inicio}')
+                print(f'Valor da comissão: R${imovel.valor_do_aluguel * 0.1}')
+                aluguel.calcular_comissao(data_atual,imovel)

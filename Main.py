@@ -1,6 +1,6 @@
 from Funcao import cadastrarProprietario, cadastrarImovel, cadastrarInquilino, registrarAluguel, finalizarAluguel,\
-                   relatorioProprietarios, relatorioImoveis, relatorioInquilinos
-
+                   relatorioProprietarios, relatorioImoveis, relatorioInquilinos,relatorioComissao,relatorioAluguel
+from datetime import date
 # try:
 #     open('Dados.xlsx', 'r')
 #
@@ -60,10 +60,11 @@ while True:
         relatorioInquilinos()
 
     elif escolha == '9':
-        pass
+        relatorioAluguel()
 
     elif escolha == '10':
-        pass
-    
+        data_atual = input('\nInforme a data de atual(DD/MM/AAAA): ')
+        data_atual = date(int(data_atual[6:]), int(data_atual[3:5]), int(data_atual[:2]))
+        relatorioComissao(data_atual)
     else:
         print('\nOpção invalida! Digite novamente.')
