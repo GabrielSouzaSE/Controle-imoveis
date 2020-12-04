@@ -28,7 +28,7 @@ def cadastrarProprietario():
 def cadastrarImovel():
     while True:
         try:
-            codigo = input('\nInforme o código do inquilino: ')
+            codigo = input('\nInforme o código do imóvel: ')
             assert codigo.isnumeric()
 
             cpf_prop = input('\nInforme o CPF do proprietário (apenas números): ')
