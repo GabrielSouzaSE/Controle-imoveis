@@ -1,19 +1,14 @@
 from Funcao import cadastrarProprietario, cadastrarImovel, cadastrarInquilino, registrarAluguel, finalizarAluguel,\
-                   relatorioProprietarios, relatorioImoveis, relatorioInquilinos,relatorioComissao,relatorioAluguel
+                   relatorioProprietarios, relatorioImoveis, relatorioInquilinos,relatorioComissao,relatorioAluguel,criarDataFrame,salvarDataframe,ExcelparaMemoria
 from datetime import date
-# try:
-#     open('Dados.xlsx', 'r')
-#
-# except IOError:
-#     print('Criando novos arquivos...')
-#     criarDataFrame()
 
-# except IOError:
-#     print('Criando novos arquivos...')
-    # criarDataFrame()
+try:
+    open('Dados.xlsx', 'r')
+except IOError:
+    print('Criando novos arquivos...')
+    criarDataFrame()
 
-# getDataFramefromExcel(listaProf, listaAluno, listaDisc, listaNota)
-
+ExcelparaMemoria()
 while True:
     print('\nMenu de Imóvel\n\n'
           '1 - Cadastrar Proprietário\n'
@@ -31,7 +26,7 @@ while True:
     escolha = input('Escolha uma das opções acima: ')
 
     if escolha == '0':
-        # salvarDataframe()
+        salvarDataframe()
         print('\nFim do programa.')
         break
 
