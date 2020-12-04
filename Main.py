@@ -1,12 +1,13 @@
 from Classes import Proprietario, Imovel, Inquilino, Aluguel
-from Funcao import voltarMenu, criarDataFrame, salvarDataframe, getDataFramefromExcel, cadastrarProprietario, cadastrarImovel, cadastrarInquilino, RegistrarAluguel
+from Funcao import voltarMenu, cadastrarProprietario, cadastrarImovel, cadastrarInquilino, RegistrarAluguel
+#  criarDataFrame, salvarDataframe, getDataFramefromExcel
 
 try:
     open('Dados.xlsx', 'r')
 
 except IOError:
     print('Criando novos arquivos...')
-    criarDataFrame()
+    # criarDataFrame()
 
 # getDataFramefromExcel(listaProf, listaAluno, listaDisc, listaNota)
 
@@ -27,7 +28,7 @@ while True:
     escolha = input('Escolha uma das opções acima: ')
 
     if escolha == '0':
-        salvarDataframe()
+        # salvarDataframe()
         print('\nFim do programa.')
         break
 
