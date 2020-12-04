@@ -10,6 +10,9 @@ def cadastrarProprietario():
             assert len(nome) >= 1
 
             cpf = input('\nInforme o CPF do propritário (apenas números): ')
+            if Proprietario.procurar(cpf) != None:
+                print("O cpf já está cadastrado no nosso banco de dados!")
+                raise AssertionError
             assert cpf.isnumeric()
 
             data = input('\nInforme a data de nascimento do proprietário (DD/MM/AAAA): ')
