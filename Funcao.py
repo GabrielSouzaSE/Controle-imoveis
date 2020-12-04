@@ -170,17 +170,20 @@ def relatorioProprietarios():
     else:
         print("Não tem proprietário no nosso banco de dados!")
 
-def relatorio_imoveis():
+
+def relatorioImoveis():
     if len(Imovel.imoveis) >= 1:
         print("Lista de Imoveis:")
         for imovel in Imovel.imoveis:
             proprietario = Proprietario.procurar(imovel.cpf)
-            print(f"Código: {imovel.codigo} Cpf: {proprietario.cpf} Nome do Proprietário: {proprietario.nome} Tipo: {imovel.tipo} Endereço: {imovel.endereco} Valor do Aluguel: {imovel.valor_do_aluguel} Status Alugado: {imovel.status}")
+            print(f"Código: {imovel.codigo} Cpf: {proprietario.cpf} Nome do Proprietário: {proprietario.nome} "
+                  f"Tipo: {imovel.tipo} Endereço: {imovel.endereco} Valor do Aluguel: {imovel.valor_do_aluguel} "
+                  f"Status Alugado: {imovel.status}")
     else:
         print("Não tem Imóveis no nosso banco de dados! ")
 
 
-def relatorio_inquilinos():
+def relatorioInquilinos():
     if len(Inquilino.inquilinos) >= 1:
         print("Lista dos Inquilinos:")
         for Inquilino in Inquilino.inquilinos:
