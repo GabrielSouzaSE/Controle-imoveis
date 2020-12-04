@@ -1,4 +1,4 @@
-# import pandas as pd
+import pandas as pd
 from datetime import date
 from Classes import Proprietario
 
@@ -150,15 +150,16 @@ def voltarMenu():
         except (AssertionError, IndexError):
             print('\nOpção inválida! Informe "SIM" ou "NÃO".')
 
+
 # def criarDataFrame():
 #     df = pd.DataFrame(columns=['Nome', 'CPF', 'Data de Nascimento'])  # Dataframe Proprietário
 #     df2 = pd.DataFrame(columns=['Codigo', 'CPF do proprietário', 'Tipo', 'Endereço', 'Valor do Aluguel', 'Status Alugado'])  # Dataframe Imóvel
 #     df3 = pd.DataFrame(columns=['Nome', 'CPF', 'Data de Nascimento'])  # Dataframe Inquilino
 #     df4 = pd.DataFrame(columns=['Codigo da Disciplina', 'Matrícula do aluno', 'Nota 1', 'Nota 2'])  # Dataframe Notas
 #     excel_writer = pd.ExcelWriter("Dados.xlsx")
-#     df.to_excel(excel_writer, 'Professores', index=False)
-#     df2.to_excel(excel_writer, 'Alunos', index=False)
-#     df3.to_excel(excel_writer, 'Disciplinas', index=False)
+#     df.to_excel(excel_writer, 'Proprietário', index=False)
+#     df2.to_excel(excel_writer, 'Imóvel', index=False)
+#     df3.to_excel(excel_writer, 'Inquilino', index=False)
 #     df4.to_excel(excel_writer, 'Notas', index=False)
 #     excel_writer.save()
 
