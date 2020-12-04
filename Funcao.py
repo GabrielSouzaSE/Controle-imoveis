@@ -98,13 +98,13 @@ def cadastrarInquilino():
 def registrarAluguel():
     while True:
         try:
-            cpf_inqui = input('\nInforme o CPF do inquilino (apenas números): ')
+            cpf_inqui = str(input('\nInforme o CPF do inquilino (apenas números): '))
             assert cpf_inqui.isnumeric()
             if Inquilino.procurar(cpf_inqui) is None:
                 print('\nO CPF não está cadastrado no nosso banco de dados!')
                 raise AssertionError
 
-            codigo_imovel = input('\nInforme o código do imóvel: ')
+            codigo_imovel = str(input('\nInforme o código do imóvel: '))
             assert codigo_imovel.isnumeric()
             if Imovel.procurar(codigo_imovel) is None:
                 print('\nO código do imóvel não está cadastrado no nosso banco de dados!')
@@ -128,7 +128,7 @@ def registrarAluguel():
 def finalizarAluguel():
     while True:
         try:
-            cpf_inqui = input('\nInforme o CPF do inquilino (apenas números): ')
+            cpf_inqui = str(input('\nInforme o CPF do inquilino (apenas números): '))
             assert cpf_inqui.isnumeric()
             if Inquilino.procurar(cpf_inqui) is None:
                 print('\nO CPF não está cadastrado no nosso banco de dados!')
@@ -225,14 +225,17 @@ def relatorioComissao(data_atual): #relatorio_comissao python righ way
                 aluguel.calcular_comissao(data_atual,imovel)
 
 def criarDataFrame():
+    excel_writer = pd.ExcelWriter('Dados.xlsx') # pylint: disable=abstract-class-instantiated
     proprietarios_dataframe = pd.DataFrame(columns=['Nome', 'CPF', 'Data de Nascimento'])  
     imovel_dataframe = pd.DataFrame(columns=['Codigo', 'Cpf', 'Tipo','Endereco','Valor do aluguel','Status'])  
     inquilinos_dataframe = pd.DataFrame(columns=['Nome', 'Cpf', 'Data de Nascimento'])  
     aluguel_dataframe = pd.DataFrame(columns=['Cpf', 'Codigo', 'data inicial', 'data final'])  
-    proprietarios_dataframe.to_excel('Dados.xlsx', 'Proprietarios', index=False)
-    imovel_dataframe.to_excel('Dados.xlsx', 'Imoveis', index=False)
-    inquilinos_dataframe.to_excel('Dados.xlsx', 'Inquilinos', index=False)
-    aluguel_dataframe.to_excel('Dados.xlsx', 'Alugueis', index=False)
+    proprietarios_dataframe.to_excel(excel_writer, 'Proprietarios', index=False)
+    imovel_dataframe.to_excel(excel_writer, 'Imoveis', index=False)
+    inquilinos_dataframe.to_excel(excel_writer, 'Inquilinos', index=False)
+    aluguel_dataframe.to_excel(excel_writer, 'Alugueis', index=False)
+    excel_writer.save()
+    
 
 def salvarDataframe():
     excel_writer = pd.ExcelWriter('Dados.xlsx') # pylint: disable=abstract-class-instantiated
@@ -240,7 +243,7 @@ def salvarDataframe():
     i = 0
     dados_proprietarios = pd.read_excel('Dados.xlsx','Proprietarios')
     for proprietario in Proprietario.proprietarios:
-        linha = [proprietario.nome,proprietario.cpf,proprietario.data_nascimento]
+        linha = [proprietario.nome,proprietario.cpf,str(proprietario.data_nascimento)]
         dados_proprietarios.loc[i] = linha
         i += 1
     dados_proprietarios.to_excel(excel_writer, 'Proprietarios', index=False)
@@ -256,7 +259,7 @@ def salvarDataframe():
     i = 0
     dados_inquilinos = pd.read_excel('Dados.xlsx','Inquilinos')
     for inquilino in Inquilino.inquilinos:
-        linha = [inquilino.nome,inquilino.cpf,inquilino.data_de_nascimento]
+        linha = [inquilino.nome,inquilino.cpf,str(inquilino.data_de_nascimento)]
         dados_inquilinos.loc[i] = linha
         i += 1
     dados_inquilinos.to_excel(excel_writer, 'Inquilinos', index=False)
@@ -264,7 +267,7 @@ def salvarDataframe():
     i = 0
     dados_alugueis = pd.read_excel('Dados.xlsx','Alugueis')
     for aluguel in Aluguel.alugueis:
-        linha = [aluguel.cpf_inquilino,aluguel.codigo_imovel,aluguel.data_inicio,aluguel.data_final]
+        linha = [aluguel.cpf_inquilino,aluguel.codigo_imovel,str(aluguel.data_inicio),str(aluguel.data_final)]
         dados_alugueis.loc[i] = linha
         i += 1
     dados_alugueis.to_excel(excel_writer, 'Alugueis', index=False)
@@ -278,30 +281,35 @@ def ExcelparaMemoria():
         nome = dados.loc[i][0]
         cpf = dados.loc[i][1]
         data_nascimento = dados.loc[i][2]
-        Proprietario(nome,cpf,data_nascimento)
+        data_nascimento = date(int(data_nascimento[:4]), int(data_nascimento[5:7]), int(data_nascimento[8:]))
+        Proprietario(nome,str(cpf),data_nascimento)
     
     dados = pd.read_excel('Dados.xlsx','Imoveis')
     for i in range(len(dados)):
-        nome = dados.loc[i][0]
+        codigo = dados.loc[i][0]
         cpf = dados.loc[i][1]
         tipo = dados.loc[i][2]
         endereco = dados.loc[i][3]
         valor_do_aluguel = dados.loc[i][4]
         status = dados.loc[i][5]
-        Imovel(nome,cpf,tipo,endereco,valor_do_aluguel,status)
+        Imovel(str(codigo),str(cpf),tipo,endereco,float(valor_do_aluguel),status)
         
    
     dados = pd.read_excel('Dados.xlsx','Inquilinos')
     for i in range(len(dados)):
         nome = dados.loc[i][0]
         cpf = dados.loc[i][1]
-        dada_de_nascimento = dados.loc[i][2]
-        Inquilino(nome,cpf,data_nascimento)
+        data_nascimento = dados.loc[i][2]
+        data_nascimento = date(int(data_nascimento[:4]), int(data_nascimento[5:7]), int(data_nascimento[8:]))
+        Inquilino(nome,str(cpf),data_nascimento)
   
     dados = pd.read_excel('Dados.xlsx','Alugueis')
     for i in range(len(dados)):
         cpf_inquilino = dados.loc[i][0]
         codigo_imovel = dados.loc[i][1]
         data_inicio = dados.loc[i][2]
+        data_inicio = date(int(data_inicio[:4]), int(data_inicio[5:7]), int(data_inicio[8:]))
         data_final = dados.loc[i][3]
-        Aluguel(cpf_inquilino,codigo_imovel,data_inicio,data_final)
+        if data_final != 'Sem data':
+            data_final = date(int(data_final[:4]), int(data_final[5:7]), int(data_final[8:]))
+        Aluguel(str(cpf_inquilino),str(codigo_imovel),data_inicio,data_final)
