@@ -82,7 +82,7 @@ def cadastrarInquilino():
                 print('\nO CPF já está cadastrado no nosso banco de dados!')
                 raise AssertionError
 
-            data = input('\nInforme a data de nascimento do proprietário (DD/MM/AAAA): ')
+            data = input('\nInforme a data de nascimento do inquilino (DD/MM/AAAA): ')
             data = date(int(data[6:]), int(data[3:5]), int(data[:2]))
 
             print('\nInquilino cadastrado com sucesso!')
