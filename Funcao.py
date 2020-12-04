@@ -93,9 +93,30 @@ def RegistrarAluguel():
             assert codigo_imovel.isnumeric()
 
             data_inicio = input('\nInforme a data de início do aluguel (DD/MM/AAAA): ')
-            data_inicio = date(int(data[6:]), int(data[3:5]), int(data[:2]))
+            data_inicio = date(int(data_inicio[6:]), int(data_inicio[3:5]), int(data_inicio[:2]))
 
-            print('Aluguel cadastrado com sucesso!')
+            print('Aluguel registrado com sucesso!')
+            break
+
+        except (AssertionError, ValueError):
+            voltar = voltarMenu()
+            if voltar.casefold() == 's':
+                break
+
+
+def FinalizarAluguel():
+    while True:
+        try:
+            cpf_inqui = input('\nInforme o CPF do inquilino (apenas números): ')
+            assert cpf_inqui.isnumeric()
+
+            codigo_imovel = input('\nInforme o código do imóvel: ')
+            assert codigo_imovel.isnumeric()
+
+            data_fim = input('\nInforme a data de início do aluguel (DD/MM/AAAA): ')
+            data_fim = date(int(data_fim[6:]), int(data_fim[3:5]), int(data_fim[:2]))
+
+            print('Aluguel finalizado com sucesso!')
             break
 
         except (AssertionError, ValueError):
