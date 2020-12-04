@@ -39,9 +39,9 @@ def cadastrarImovel():
 
             cpf_prop = input('\nInforme o CPF do proprietário (apenas números): ')
             assert cpf_prop.isnumeric()
-            # if Proprietario.procurar(cpf) == :
-            #     print("O CPF já está cadastrado no nosso banco de dados!")
-            #     raise AssertionError
+            if Imovel.procurar(cpf_prop) is None:
+                print('\nO CPF não está cadastrado no nosso banco de dados!')
+                raise AssertionError
 
             print('\n1 - Casa\n'
                   '2 - Apartamento')
@@ -100,9 +100,15 @@ def registrarAluguel():
         try:
             cpf_inqui = input('\nInforme o CPF do inquilino (apenas números): ')
             assert cpf_inqui.isnumeric()
+            if Aluguel.procurar(cpf_inqui) is None:
+                print('\nO CPF não está cadastrado no nosso banco de dados!')
+                raise AssertionError
 
             codigo_imovel = input('\nInforme o código do imóvel: ')
             assert codigo_imovel.isnumeric()
+            if Aluguel.procurar(cpf) is None:
+                print('\nO código do imóvel não está cadastrado no nosso banco de dados!')
+                raise AssertionError
 
             data_inicio = input('\nInforme a data de início do aluguel (DD/MM/AAAA): ')
             data_inicio = date(int(data_inicio[6:]), int(data_inicio[3:5]), int(data_inicio[:2]))
@@ -122,9 +128,15 @@ def finalizarAluguel():
         try:
             cpf_inqui = input('\nInforme o CPF do inquilino (apenas números): ')
             assert cpf_inqui.isnumeric()
+            if Aluguel.procurar(cpf_inqui) is None:
+                print('\nO CPF não está cadastrado no nosso banco de dados!')
+                raise AssertionError
 
             codigo_imovel = input('\nInforme o código do imóvel: ')
             assert codigo_imovel.isnumeric()
+            if Aluguel.procurar(codigo_imovel) is None:
+                print('\nO código do imóvel não está cadastrado no nosso banco de dados!')
+                raise AssertionError
 
             data_fim = input('\nInforme a data de início do aluguel (DD/MM/AAAA): ')
             data_fim = date(int(data_fim[6:]), int(data_fim[3:5]), int(data_fim[:2]))
