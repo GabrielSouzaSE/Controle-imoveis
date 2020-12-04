@@ -7,7 +7,11 @@ from Funcao import cadastrarProprietario, cadastrarImovel, cadastrarInquilino, r
 #     print('Criando novos arquivos...')
 #     criarDataFrame()
 
-#getDataFramefromExcel(listaProf, listaAluno, listaDisc, listaNota)
+# except IOError:
+#     print('Criando novos arquivos...')
+    # criarDataFrame()
+
+# getDataFramefromExcel(listaProf, listaAluno, listaDisc, listaNota)
 
 while True:
     print('\nMenu de Imóvel\n\n'
@@ -26,7 +30,7 @@ while True:
     escolha = input('Escolha uma das opções acima: ')
 
     if escolha == '0':
-        #salvarDataframe()
+        # salvarDataframe()
         print('\nFim do programa.')
         break
 
