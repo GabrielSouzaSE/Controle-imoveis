@@ -1,12 +1,15 @@
 from Classes import Proprietario, Imovel, Inquilino, Aluguel
-from Funcao import voltarMenu, cadastrarProprietario, cadastrarImovel, cadastrarInquilino, RegistrarAluguel
-#  criarDataFrame, salvarDataframe, getDataFramefromExcel
+from Funcao import cadastrarProprietario, cadastrarImovel, cadastrarInquilino, registrarAluguel, finalizarAluguel
 
-try:
-    open('Dados.xlsx', 'r')
+# try:
+#     open('Dados.xlsx', 'r')
+#
+# except IOError:
+#     print('Criando novos arquivos...')
+#     criarDataFrame()
 
-except IOError:
-    print('Criando novos arquivos...')
+# except IOError:
+#     print('Criando novos arquivos...')
     # criarDataFrame()
 
 # getDataFramefromExcel(listaProf, listaAluno, listaDisc, listaNota)
@@ -42,10 +45,10 @@ while True:
         cadastrarInquilino()
 
     elif escolha == '4':
-        RegistrarAluguel()
+        registrarAluguel()
 
     elif escolha == '5':
-        pass
+        finalizarAluguel()
 
     elif escolha == '6':
         pass

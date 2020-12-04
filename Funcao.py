@@ -83,7 +83,7 @@ def cadastrarInquilino():
                 break
 
 
-def RegistrarAluguel():
+def registrarAluguel():
     while True:
         try:
             cpf_inqui = input('\nInforme o CPF do inquilino (apenas números): ')
@@ -104,7 +104,7 @@ def RegistrarAluguel():
                 break
 
 
-def FinalizarAluguel():
+def finalizarAluguel():
     while True:
         try:
             cpf_inqui = input('\nInforme o CPF do inquilino (apenas números): ')
