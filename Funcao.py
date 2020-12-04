@@ -106,7 +106,7 @@ def registrarAluguel():
 
             codigo_imovel = input('\nInforme o código do imóvel: ')
             assert codigo_imovel.isnumeric()
-            if Imovel.procurar(cpf) is None:
+            if Imovel.procurar(codigo_imovel) is None:
                 print('\nO código do imóvel não está cadastrado no nosso banco de dados!')
                 raise AssertionError
 

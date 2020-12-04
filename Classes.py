@@ -65,8 +65,10 @@ class Inquilino:
 
 class Aluguel:
     alugueis = []
+    data_inicio = date
+    data_final = date
 
-    def __init__(self, cpf_inquilino, codigo_imovel, data_inicio, data_final):
+    def __init__(self, cpf_inquilino, codigo_imovel, data_inicio=data_inicio, data_final=data_final):
         self.cpf_inquilino = cpf_inquilino
         self.codigo_imovel = codigo_imovel
         self.data_inicio = data_inicio
