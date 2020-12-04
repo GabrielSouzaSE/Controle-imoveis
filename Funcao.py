@@ -1,4 +1,4 @@
-import pandas as pd
+# import pandas as pd
 from datetime import date
 from Classes import Proprietario, Imovel, Inquilino, Aluguel
 
@@ -61,7 +61,7 @@ def cadastrarImovel():
             valor = float(input('\nInforme o valor do aluguel: '))
             
             print('\nImóvel cadastrado com sucesso!')
-            Imovel(codigo, cpf_prop, tipo, endereco, valor)
+            Imovel(codigo, cpf_prop, tipo, endereco, valor, 'Não')
             break
 
         except (AssertionError, ValueError):
