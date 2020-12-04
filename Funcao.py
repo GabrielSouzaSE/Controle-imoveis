@@ -10,10 +10,10 @@ def cadastrarProprietario():
             assert len(nome) >= 1
 
             cpf = input('\nInforme o CPF do propritário (apenas números): ')
-            if Proprietario.procurar(cpf) != None:
-                print("O cpf já está cadastrado no nosso banco de dados!")
-                raise AssertionError
             assert cpf.isnumeric()
+            if Proprietario.procurar(cpf) is not None:
+                print("O CPF já está cadastrado no nosso banco de dados!")
+                raise AssertionError
 
             data = input('\nInforme a data de nascimento do proprietário (DD/MM/AAAA): ')
             data_nascimento = date(int(data[6:]), int(data[3:5]), int(data[:2]))
@@ -33,9 +33,15 @@ def cadastrarImovel():
         try:
             codigo = input('\nInforme o código do imóvel: ')
             assert codigo.isnumeric()
+            if Imovel.procurar(codigo) is not None:
+                print("O código do imóvel já está cadastrado no nosso banco de dados!")
+                raise AssertionError
 
             cpf_prop = input('\nInforme o CPF do proprietário (apenas números): ')
             assert cpf_prop.isnumeric()
+            # if Proprietario.procurar(cpf) == :
+            #     print("O CPF já está cadastrado no nosso banco de dados!")
+            #     raise AssertionError
 
             print('\n1 - Casa\n'
                   '2 - Apartamento')
@@ -71,6 +77,9 @@ def cadastrarInquilino():
 
             cpf = input('\nInforme o CPF do inquilino (apenas números): ')
             assert cpf.isnumeric()
+            if Inquilino.procurar(cpf) is not None:
+                print("O CPF já está cadastrado no nosso banco de dados!")
+                raise AssertionError
 
             data = input('\nInforme a data de nascimento do proprietário (DD/MM/AAAA): ')
             data_nascimento = date(int(data[6:]), int(data[3:5]), int(data[:2]))
