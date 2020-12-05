@@ -14,7 +14,7 @@ class Proprietario:
     @staticmethod
     def procurar(cpf):
         for proprietario in Proprietario.proprietarios:
-            if proprietario.cpf == cpf:
+            if proprietario.cpf == str(cpf):
                 return proprietario
             return None
 
@@ -59,7 +59,7 @@ class Inquilino:
     @staticmethod
     def procurar(cpf):
         for inquilino in Inquilino.inquilinos:
-            if inquilino.cpf == cpf:
+            if inquilino.cpf == str(cpf):
                 return inquilino
         return None
 

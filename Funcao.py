@@ -9,7 +9,7 @@ def cadastrarProprietario():
             nome = input('\nInforme o nome do proprietário: ').strip().capitalize()
             assert len(nome) >= 1
 
-            cpf = input('\nInforme o CPF do proprietário (apenas números): ')
+            cpf = str(input('\nInforme o CPF do proprietário (apenas números): '))
             assert cpf.isnumeric()
             if Proprietario.procurar(cpf) is not None:
                 print('\nO CPF já está cadastrado no nosso banco de dados!')
@@ -19,7 +19,7 @@ def cadastrarProprietario():
             data = date(int(data[6:]), int(data[3:5]), int(data[:2]))
 
             print('\nProprietário cadastrado com sucesso!')
-            Proprietario(nome, cpf, data)
+            Proprietario(nome, str(cpf), data)
             break
 
         except (AssertionError, ValueError):
@@ -37,9 +37,9 @@ def cadastrarImovel():
                 print('\nO código do imóvel já está cadastrado no nosso banco de dados!')
                 raise AssertionError
 
-            cpf_prop = input('\nInforme o CPF do proprietário (apenas números): ')
+            cpf_prop = str(input('\nInforme o CPF do proprietário (apenas números): '))
             assert cpf_prop.isnumeric()
-            if Proprietario.procurar(cpf_prop) is None:
+            if Proprietario.procurar(str(cpf_prop)) is not None:
                 print('\nO CPF não está cadastrado no nosso banco de dados!')
                 raise AssertionError
 
