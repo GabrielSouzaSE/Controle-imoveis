@@ -1,6 +1,7 @@
 from Funcao import cadastrarProprietario, cadastrarImovel, cadastrarInquilino, registrarAluguel, finalizarAluguel,\
                    relatorioProprietarios, relatorioImoveis, relatorioInquilinos,relatorioComissao,relatorioAluguel,criarDataFrame,salvarDataframe,ExcelparaMemoria
 from datetime import date
+import Classes 
 
 try:
     open('Dados.xlsx', 'r')

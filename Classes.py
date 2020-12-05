@@ -5,7 +5,7 @@ class Proprietario:
 
     def __init__(self, nome, cpf, data_nascimento):
         self.nome = nome
-        self.cpf = cpf
+        self.cpf = str(cpf)
         self.data_nascimento = data_nascimento
 
         if Proprietario.procurar(cpf) is None:
@@ -16,7 +16,7 @@ class Proprietario:
         for proprietario in Proprietario.proprietarios:
             if proprietario.cpf == str(cpf):
                 return proprietario
-            return None
+        return None
 
 
 class Imovel:
@@ -38,7 +38,7 @@ class Imovel:
         for imovel in Imovel.imoveis:
             if imovel.codigo == codigo:
                 return imovel
-            return None
+        return None
 
     @staticmethod
     def modificar_status(imovel, status):
@@ -82,7 +82,7 @@ class Aluguel:
         for aluguel in Aluguel.alugueis:
             if aluguel.cpf_inquilino == cpf_inquilino:
                 return aluguel
-            return None
+        return None
     
     @staticmethod
     def adicionar_fim_aluguel(aluguel,data_final):

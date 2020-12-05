@@ -39,7 +39,7 @@ def cadastrarImovel():
 
             cpf_prop = str(input('\nInforme o CPF do proprietário (apenas números): '))
             assert cpf_prop.isnumeric()
-            if Proprietario.procurar(str(cpf_prop)) is not None:
+            if Proprietario.procurar(str(cpf_prop)) is None:
                 print('\nO CPF não está cadastrado no nosso banco de dados!')
                 raise AssertionError
 
