@@ -174,9 +174,9 @@ def relatorioProprietarios():
     print()
     if len(Proprietario.proprietarios) >= 1:
         print("Lista dos Proprietários: ")
+        print(f"{'Nome':<12} {'CPF':<12} Data de nascimento")
         for proprietario in Proprietario.proprietarios:
-            print(
-                f"Nome: {proprietario.nome} Cpf: {proprietario.cpf} Data de Nascimento: {proprietario.data_nascimento}")
+            print(f'{proprietario.nome:<12} {proprietario.cpf:<12} {proprietario.data_nascimento}')
     else:
         print("Não tem proprietário no nosso banco de dados!")
 
@@ -185,11 +185,12 @@ def relatorioImoveis():
     print()
     if len(Imovel.imoveis) >= 1:
         print("Lista de Imoveis:")
+        print(f"{'Código':<6} {'CPF do proprietário':<20} {'Nome do Proprietário':<21} {'Tipo':<12} {'Endereço':<10} "
+              f"{'Valor do aluguel':<17} Status alugado")
         for imovel in Imovel.imoveis:
             proprietario = Proprietario.procurar(imovel.cpf)
-            print(f"Código: {imovel.codigo} Cpf: {proprietario.cpf} Nome do Proprietário: {proprietario.nome} "
-                  f"Tipo: {imovel.tipo} Endereço: {imovel.endereco} Valor do Aluguel: {imovel.valor_do_aluguel} "
-                  f"Status Alugado: {imovel.status}")
+            print(f"{imovel.codigo:<6} {proprietario.cpf:<20} {proprietario.nome:<21} {imovel.tipo:<12} "
+                  f"{imovel.endereco:<10} R${imovel.valor_do_aluguel:<17} {imovel.status}")
     else:
         print("Não tem Imóveis no nosso banco de dados! ")
 
@@ -198,8 +199,9 @@ def relatorioInquilinos():
     print()
     if len(Inquilino.inquilinos) >= 1:
         print("Lista de Inquilinos: ")
+        print(f"{'Nome':<12} {'CPF':<12} Data de nascimento")
         for inquilino in Inquilino.inquilinos:
-            print(f'Nome: {inquilino.nome} Cpf: {inquilino.cpf} Data de nascimento: {inquilino.data_de_nascimento} ')
+            print(f'{inquilino.nome:<12} {inquilino.cpf:<12} {inquilino.data_nascimento}')
     else:
         print("Não tem Inquilinos no nosso banco de dados!")
 
@@ -268,7 +270,7 @@ def salvarDataframe():
     i = 0
     dados_inquilinos = pd.read_excel('Dados.xlsx', 'Inquilinos')
     for inquilino in Inquilino.inquilinos:
-        linha = [inquilino.nome, inquilino.cpf, str(inquilino.data_de_nascimento)]
+        linha = [inquilino.nome, inquilino.cpf, str(inquilino.data_nascimento)]
         dados_inquilinos.loc[i] = linha
         i += 1
     dados_inquilinos.to_excel(excel_writer, 'Inquilinos', index=False)
