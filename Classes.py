@@ -89,4 +89,4 @@ class Aluguel:
 
     def calcular_comissao(self, data_atual, imovel):
         duracao = data_atual - self.data_inicio
-        return print(f"A comissao calculada pro data atual: R${(duracao.days // 30) * (imovel.valor_do_aluguel * 0.1)}")
+        return print(f"Comissão calculada para a data atual: R${(duracao.days // 30) * (imovel.valor_do_aluguel * 0.1)}")
