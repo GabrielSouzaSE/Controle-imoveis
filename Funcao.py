@@ -213,18 +213,18 @@ def relatorioAluguel():
             inquilino = Inquilino.procurar(aluguel.cpf_inquilino)
             imovel = Imovel.procurar(aluguel.codigo_imovel)
             proprietario = Proprietario.procurar(imovel.cpf)
-            print(f"Nome do inquilino: {inquilino.nome} ")
-            print(f"Código: {imovel.codigo}, Tipo: {imovel.tipo}, Endereço: {imovel.endereco}, Proprietário: {proprietario.nome}")
+            print(f"- Nome do inquilino: {inquilino.nome} ")
+            print(f"- Código: {imovel.codigo}, Tipo: {imovel.tipo}, Endereço: {imovel.endereco}, Proprietário: {proprietario.nome}")
             if aluguel.data_final == 'Sem data':
-                print(f"Valor do Aluguel: {imovel.valor_do_aluguel}\nData do inicio do aluguel: {aluguel.data_inicio}\n")
+                print(f"- Valor do Aluguel: {imovel.valor_do_aluguel}\n- Data do inicio do aluguel: {aluguel.data_inicio}\n")
             else:
-                print(f"Valor do Aluguel: {imovel.valor_do_aluguel}\nData do inicio do aluguel: {aluguel.data_inicio}\nData do final do aluguel: {aluguel.data_final}\n")
+                print(f"- Valor do Aluguel: {imovel.valor_do_aluguel}\n- Data do inicio do aluguel: {aluguel.data_inicio}\n- Data do final do aluguel: {aluguel.data_final}\n")
     else:
         print("Não existem aluguéis cadastrados no nosso banco de dados!")
 
 
 def relatorioComissao():  # relatorio_comissao python right way
-    print()
+    print("\nRelatório de Comissões\n")
     if len(Aluguel.alugueis) >= 1:
         for aluguel in Aluguel.alugueis:
             imovel = Imovel.procurar(aluguel.codigo_imovel)
@@ -232,7 +232,6 @@ def relatorioComissao():  # relatorio_comissao python right way
                 print(f'Valor do aluguel: {imovel.valor_do_aluguel}, Data do início do aluguel: {aluguel.data_inicio}')
                 print(f'Valor da comissão do imóvel: R${(imovel.valor_do_aluguel * 0.1)}')
                 aluguel.calcular_comissao(date.today(), imovel)
-                print()
     else:
         print("Não existem aluguéis ativos no nosso banco de dados!")
 
