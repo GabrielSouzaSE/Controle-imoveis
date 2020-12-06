@@ -230,7 +230,7 @@ def relatorioComissao():  # relatorio_comissao python right way
             imovel = Imovel.procurar(aluguel.codigo_imovel)
             if imovel.status == 'Sim':
                 print(f'Valor do aluguel: {imovel.valor_do_aluguel}, Data do início do aluguel: {aluguel.data_inicio}')
-                print(f'Valor da comissão do imóvel: R${(imovel.valor_do_aluguel * 0.1)}')
+                print(f'Valor da comissão do imóvel {imovel.codigo}: R${(imovel.valor_do_aluguel * 0.1)}')
                 aluguel.calcular_comissao(date.today(), imovel)
     else:
         print("Não existem aluguéis ativos no nosso banco de dados!")
