@@ -1,7 +1,8 @@
-from Funcao import cadastrarProprietario, cadastrarImovel, cadastrarInquilino, registrarAluguel, finalizarAluguel,\
-                   relatorioProprietarios, relatorioImoveis, relatorioInquilinos,relatorioComissao,relatorioAluguel,criarDataFrame,salvarDataframe,ExcelparaMemoria
+from Funcao import cadastrarProprietario, cadastrarImovel, cadastrarInquilino, registrarAluguel, finalizarAluguel, \
+    relatorioProprietarios, relatorioImoveis, relatorioInquilinos, relatorioComissao, relatorioAluguel, \
+    salvarDataframe, ExcelparaMemoria, criarDataFrame
 from datetime import date
-import Classes 
+import Classes
 
 try:
     open('Dados.xlsx', 'r')
@@ -51,7 +52,7 @@ while True:
 
     elif escolha == '7':
         relatorioImoveis()
-    
+
     elif escolha == '8':
         relatorioInquilinos()
 

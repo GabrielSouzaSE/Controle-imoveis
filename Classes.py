@@ -1,4 +1,6 @@
 from datetime import date
+
+
 # Definições das classes!
 class Proprietario:
     proprietarios = []
@@ -87,7 +89,7 @@ class Aluguel:
             if aluguel.cpf_inquilino == cpf_inquilino:
                 return aluguel
         return None
-    
+
     @staticmethod
     def adicionar_fim_aluguel(aluguel, data_final):
         aluguel.data_final = data_final
@@ -95,4 +97,3 @@ class Aluguel:
     def calcular_comissao(self, data_atual, imovel):
         duracao = data_atual - self.data_inicio
         return print(f"A comissao calculada pro data atual: R${(duracao.days // 30) * (imovel.valor_do_aluguel * 0.1)}")
-    
