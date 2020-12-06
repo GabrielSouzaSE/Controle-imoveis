@@ -144,7 +144,7 @@ def finalizarAluguel():
             data_fim = date(int(data_fim[6:]), int(data_fim[3:5]), int(data_fim[:2]))
             aluguel = Aluguel.procurar(cpf_inqui)
             if aluguel.data_inicio > data_fim:
-                print('Data fim menor que data início')
+                print('Foi inserido uma data final antes da data de início do aluguel!')
                 raise AssertionError
 
             print('\nAluguel finalizado com sucesso!')
