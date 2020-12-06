@@ -108,7 +108,7 @@ def registrarAluguel():
             assert codigo_imovel.isnumeric()
             imovel = Imovel.procurar(codigo_imovel)
             if imovel is None or imovel.status == 'Sim':
-                print('\nO imóvel não está cadastrado no nosso banco de dados ou já existe um aluguel registrado para esse imóvel!')
+                print('\nO imóvel não está cadastrado no nosso banco de dados ou já existe um aluguel registrado nesse imóvel!')
                 raise AssertionError
 
             data_inicio = input('\nInforme a data de início do aluguel (DD/MM/AAAA): ')
@@ -136,19 +136,19 @@ def finalizarAluguel():
 
             codigo_imovel = input('\nInforme o código do imóvel: ')
             assert codigo_imovel.isnumeric()
-            if Imovel.procurar(codigo_imovel) is None:
-                print('\nO código do imóvel não está cadastrado no nosso banco de dados!')
+            imovel = Imovel.procurar(codigo_imovel)
+            if imovel is None or imovel.status == 'Não':
+                print('\nO imóvel não está cadastrado no nosso banco de dados ou não existe um aluguel registrado nesse imóvel!')
                 raise AssertionError
 
             data_fim = input('\nInforme a data de final do aluguel (DD/MM/AAAA): ')
             data_fim = date(int(data_fim[6:]), int(data_fim[3:5]), int(data_fim[:2]))
             aluguel = Aluguel.procurar(cpf_inqui)
             if aluguel.data_inicio > data_fim:
-                print('Foi inserido uma data final antes da data de início do aluguel!')
+                print('\nFoi inserida uma data final antes da data de início do aluguel!')
                 raise AssertionError
 
             print('\nAluguel finalizado com sucesso!')
-            imovel = Imovel.procurar(codigo_imovel)
             Imovel.modificar_status(imovel, 'Não')
             Aluguel.adicionar_fim_aluguel(aluguel, data_fim)
             break
@@ -178,7 +178,7 @@ def relatorioProprietarios():
         for proprietario in Proprietario.proprietarios:
             print(f'{proprietario.nome:<12} {proprietario.cpf:<12} {proprietario.data_nascimento}')
     else:
-        print("Não tem proprietário no nosso banco de dados!")
+        print("Não existem proprietários no nosso banco de dados!")
 
 
 def relatorioImoveis():
@@ -192,7 +192,7 @@ def relatorioImoveis():
             print(f"{imovel.codigo:<7} {proprietario.cpf:<20} {proprietario.nome:<21} {imovel.tipo:<12} "
                   f"{imovel.endereco:<10} R${imovel.valor_do_aluguel:<15} {imovel.status}")
     else:
-        print("Não tem Imóveis no nosso banco de dados! ")
+        print("Não existem imóveis no nosso banco de dados! ")
 
 
 def relatorioInquilinos():
@@ -203,7 +203,7 @@ def relatorioInquilinos():
         for inquilino in Inquilino.inquilinos:
             print(f'{inquilino.nome:<12} {inquilino.cpf:<12} {inquilino.data_nascimento}')
     else:
-        print("Não tem Inquilinos no nosso banco de dados!")
+        print("Não existem inquilinos no nosso banco de dados!")
 
 
 def relatorioAluguel():
@@ -220,7 +220,7 @@ def relatorioAluguel():
             else:
                 print(f"- Valor do Aluguel: {imovel.valor_do_aluguel}\n- Data do inicio do aluguel: {aluguel.data_inicio}\n- Data do final do aluguel: {aluguel.data_final}\n")
     else:
-        print("Não tem alugueis cadastrado no nosso banco de dados!")
+        print("Não existem aluguéis cadastrados no nosso banco de dados!")
 
 
 def relatorioComissao():  # relatorio_comissao python right way
@@ -228,12 +228,12 @@ def relatorioComissao():  # relatorio_comissao python right way
     if len(Aluguel.alugueis) >= 1:
         for aluguel in Aluguel.alugueis:
             imovel = Imovel.procurar(aluguel.codigo_imovel)
-            if aluguel.data_final == 'Sem data':
-                print(f'- Valor do aluguel: {imovel.valor_do_aluguel}\n- Data do início do aluguel: {aluguel.data_inicio}')
-                print(f'- Valor da comissão do imóvel: R${(imovel.valor_do_aluguel * 0.1)}')
+            if imovel.status == 'Sim':
+                print(f'Valor do aluguel: {imovel.valor_do_aluguel}, Data do início do aluguel: {aluguel.data_inicio}')
+                print(f'Valor da comissão do imóvel: R${(imovel.valor_do_aluguel * 0.1)}')
                 aluguel.calcular_comissao(date.today(), imovel)
     else:
-        print("Não tem alugueis ativos cadastrado no nosso banco de dados!")
+        print("Não existem aluguéis ativos no nosso banco de dados!")
 
 
 def criarDataFrame():
