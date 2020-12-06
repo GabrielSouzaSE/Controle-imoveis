@@ -185,12 +185,12 @@ def relatorioImoveis():
     print()
     if len(Imovel.imoveis) >= 1:
         print("Lista de Imoveis:")
-        print(f"{'Código':<6} {'CPF do proprietário':<20} {'Nome do Proprietário':<21} {'Tipo':<12} {'Endereço':<10} "
+        print(f"{'Código':<7} {'CPF do proprietário':<20} {'Nome do Proprietário':<21} {'Tipo':<12} {'Endereço':<10} "
               f"{'Valor do aluguel':<17} Status alugado")
         for imovel in Imovel.imoveis:
             proprietario = Proprietario.procurar(imovel.cpf)
-            print(f"{imovel.codigo:<6} {proprietario.cpf:<20} {proprietario.nome:<21} {imovel.tipo:<12} "
-                  f"{imovel.endereco:<10} R${imovel.valor_do_aluguel:<17} {imovel.status}")
+            print(f"{imovel.codigo:<7} {proprietario.cpf:<20} {proprietario.nome:<21} {imovel.tipo:<12} "
+                  f"{imovel.endereco:<10} R${imovel.valor_do_aluguel:<15} {imovel.status}")
     else:
         print("Não tem Imóveis no nosso banco de dados! ")
 
