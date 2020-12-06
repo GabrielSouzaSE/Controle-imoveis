@@ -205,7 +205,7 @@ def relatorioInquilinos():
 
 
 def relatorioAluguel():
-    print()
+    print("\nRelatório de Aluguéis\n")
     if len(Aluguel.alugueis) >= 1:
         for aluguel in Aluguel.alugueis:
             inquilino = Inquilino.procurar(aluguel.cpf_inquilino)
@@ -214,10 +214,12 @@ def relatorioAluguel():
             print(f"Nome do inquilino: {inquilino.nome} ")
             print(f"Imovel: código: {imovel.codigo} Tipo: {imovel.tipo} Endereço: {imovel.endereco} Proprietário: {proprietario.nome}")
             if aluguel.data_final == 'Sem data':
-                print(f"Valor do Aluguel: {imovel.valor_do_aluguel} data do inicio do aluguel: {aluguel.data_inicio} ")
+                print(f"Valor do Aluguel: {imovel.valor_do_aluguel}")
+                print(f"Data do inicio do aluguel: {aluguel.data_inicio}")
             else:
-                print(
-                    f"Valor do Aluguel: {imovel.valor_do_aluguel} data do inicio do aluguel: {aluguel.data_inicio} data final: {aluguel.data_final} ")
+                print(f"Valor do Aluguel: {imovel.valor_do_aluguel}")
+                print(f"Data do inicio do aluguel: {aluguel.data_inicio}")
+                print(f"Data do final do aluguel: {aluguel.data_final}")
     else:
         print("Não tem alugueis cadastrado no nosso banco de dados!")
 
@@ -229,7 +231,7 @@ def relatorioComissao():  # relatorio_comissao python right way
             imovel = Imovel.procurar(aluguel.codigo_imovel)
             if aluguel.data_final == 'Sem data':
                 print(f'Valor do aluguel: {imovel.valor_do_aluguel}, Data do início do aluguel: {aluguel.data_inicio}')
-                print(f'Valor da comissão: R${imovel.valor_do_aluguel * 0.1}')
+                print(f'Valor da comissão: R${((imovel.valor_do_aluguel * 0.1), 2)}')
                 aluguel.calcular_comissao(date.today(), imovel)
     else:
         print("Não tem alugueis ativos cadastrado no nosso banco de dados!")
