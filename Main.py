@@ -59,8 +59,6 @@ while True:
         relatorioAluguel()
 
     elif escolha == '10':
-        data_atual = input('\nInforme a data de atual(DD/MM/AAAA): ')
-        data_atual = date(int(data_atual[6:]), int(data_atual[3:5]), int(data_atual[:2]))
-        relatorioComissao(data_atual)
+        relatorioComissao()
     else:
         print('\nOpção invalida! Digite novamente.')
