@@ -142,11 +142,14 @@ def finalizarAluguel():
 
             data_fim = input('\nInforme a data de final do aluguel (DD/MM/AAAA): ')
             data_fim = date(int(data_fim[6:]), int(data_fim[3:5]), int(data_fim[:2]))
+            aluguel = Aluguel.procurar(cpf_inqui)
+            if aluguel.data_inicio > data_fim:
+                print('Data fim menor que data início')
+                raise AssertionError
 
             print('\nAluguel finalizado com sucesso!')
             imovel = Imovel.procurar(codigo_imovel)
             Imovel.modificar_status(imovel, 'Não')
-            aluguel = Aluguel.procurar(cpf_inqui)
             Aluguel.adicionar_fim_aluguel(aluguel, data_fim)
             break
 
