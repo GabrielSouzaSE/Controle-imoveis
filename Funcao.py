@@ -106,15 +106,15 @@ def registrarAluguel():
 
             codigo_imovel = str(input('\nInforme o código do imóvel: '))
             assert codigo_imovel.isnumeric()
-            if Imovel.procurar(codigo_imovel) is None:
-                print('\nO código do imóvel não está cadastrado no nosso banco de dados!')
+            imovel = Imovel.procurar(codigo_imovel)
+            if imovel is None or imovel.status == 'Sim':
+                print('\nO imóvel não está cadastrado no nosso banco de dados ou já existe um aluguel registrado para esse imóvel!')
                 raise AssertionError
 
             data_inicio = input('\nInforme a data de início do aluguel (DD/MM/AAAA): ')
             data_inicio = date(int(data_inicio[6:]), int(data_inicio[3:5]), int(data_inicio[:2]))
 
             print('\nAluguel registrado com sucesso!')
-            imovel = Imovel.procurar(codigo_imovel)
             Imovel.modificar_status(imovel, 'Sim')
             Aluguel(cpf_inqui, codigo_imovel, data_inicio)
             break
@@ -219,13 +219,13 @@ def relatorioAluguel():
         print("Não tem alugueis cadastrado no nosso banco de dados!")
 
 
-def relatorioComissao():  # relatorio_comissao python righ way
+def relatorioComissao():  # relatorio_comissao python right way
     print()
     if len(Aluguel.alugueis) >= 1:
         for aluguel in Aluguel.alugueis:
             imovel = Imovel.procurar(aluguel.codigo_imovel)
             if aluguel.data_final == 'Sem data':
-                print(f'Valor do aluguel: {imovel.valor_do_aluguel}, Data do inicio do aluguel: {aluguel.data_inicio}')
+                print(f'Valor do aluguel: {imovel.valor_do_aluguel}, Data do início do aluguel: {aluguel.data_inicio}')
                 print(f'Valor da comissão: R${imovel.valor_do_aluguel * 0.1}')
                 aluguel.calcular_comissao(date.today(), imovel)
 

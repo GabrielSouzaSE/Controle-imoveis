@@ -44,6 +44,10 @@ class Imovel:
     def modificar_status(imovel, status):
         imovel.status = status
 
+    # @staticmethod
+    # def retornar_status(imovel):
+    #     return imovel.status
+
 
 class Inquilino:
     inquilinos = []
