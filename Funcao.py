@@ -231,6 +231,8 @@ def relatorioComissao():  # relatorio_comissao python right way
                 print(f'Valor do aluguel: {imovel.valor_do_aluguel}, Data do início do aluguel: {aluguel.data_inicio}')
                 print(f'Valor da comissão: R${imovel.valor_do_aluguel * 0.1}')
                 aluguel.calcular_comissao(date.today(), imovel)
+    else:
+        print("Não tem alugueis ativos cadastrado no nosso banco de dados!")
 
 
 def criarDataFrame():
