@@ -1,6 +1,3 @@
-from datetime import date
-
-
 # Definições das classes!
 class Proprietario:
     proprietarios = []
@@ -46,18 +43,14 @@ class Imovel:
     def modificar_status(imovel, status):
         imovel.status = status
 
-    # @staticmethod
-    # def retornar_status(imovel):
-    #     return imovel.status
-
 
 class Inquilino:
     inquilinos = []
 
-    def __init__(self, nome, cpf, data_de_nascimento):
+    def __init__(self, nome, cpf, data_nascimento):
         self.nome = nome
         self.cpf = cpf
-        self.data_de_nascimento = data_de_nascimento
+        self.data_nascimento = data_nascimento
 
         if Inquilino.procurar(cpf) is None:
             Inquilino.inquilinos.append(self)
