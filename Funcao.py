@@ -16,6 +16,7 @@ def cadastrarProprietario():
                 raise AssertionError
 
             data = input('\nInforme a data de nascimento do proprietário (DD/MM/AAAA): ')
+            assert data[2] == '/' and data[4] == '/'
             data = date(int(data[6:]), int(data[3:5]), int(data[:2]))
 
             print('\nProprietário cadastrado com sucesso!')
@@ -83,6 +84,7 @@ def cadastrarInquilino():
                 raise AssertionError
 
             data = input('\nInforme a data de nascimento do inquilino (DD/MM/AAAA): ')
+            assert data[2] == '/' and data[4] == '/'
             data = date(int(data[6:]), int(data[3:5]), int(data[:2]))
 
             print('\nInquilino cadastrado com sucesso!')
@@ -112,6 +114,7 @@ def registrarAluguel():
                 raise AssertionError
 
             data_inicio = input('\nInforme a data de início do aluguel (DD/MM/AAAA): ')
+            assert data_inicio[2] == '/' and data_inicio[4] == '/'
             data_inicio = date(int(data_inicio[6:]), int(data_inicio[3:5]), int(data_inicio[:2]))
 
             print('\nAluguel registrado com sucesso!')
@@ -142,8 +145,9 @@ def finalizarAluguel():
                 raise AssertionError
 
             data_fim = input('\nInforme a data de final do aluguel (DD/MM/AAAA): ')
+            assert data_fim[2] == '/' and data_fim[4] == '/'
             data_fim = date(int(data_fim[6:]), int(data_fim[3:5]), int(data_fim[:2]))
-            aluguel = Aluguel.procurar2(cpf_inqui)
+            aluguel = Aluguel.procurar(cpf_inqui)
             if aluguel.data_inicio > data_fim:
                 print('\nFoi inserida uma data final antes da data de início do aluguel!')
                 raise AssertionError
