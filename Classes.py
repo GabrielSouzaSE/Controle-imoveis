@@ -73,8 +73,9 @@ class Aluguel:
         self.data_inicio = data_inicio
         self.data_final = data_final
 
-        if Aluguel.procurar(cpf_inquilino) is None:
-            Aluguel.alugueis.append(self)
+        # if Aluguel.procurar(cpf_inquilino) is None:
+        Aluguel.alugueis.append(self)
+
 
     @staticmethod
     def procurar(cpf_inquilino):

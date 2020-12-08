@@ -144,6 +144,9 @@ def finalizarAluguel():
             data_fim = input('\nInforme a data de final do aluguel (DD/MM/AAAA): ')
             data_fim = date(int(data_fim[6:]), int(data_fim[3:5]), int(data_fim[:2]))
             aluguel = Aluguel.procurar(cpf_inqui)
+            while aluguel.status == 'Não':
+                aluguel = Aluguel.procurar(cpf_inqui)
+
             if aluguel.data_inicio > data_fim:
                 print('\nFoi inserida uma data final antes da data de início do aluguel!')
                 raise AssertionError
@@ -215,10 +218,10 @@ def relatorioAluguel():
             proprietario = Proprietario.procurar(imovel.cpf)
             print(f"Nome do inquilino: {inquilino.nome} ")
             print(f"Código: {imovel.codigo}, Tipo: {imovel.tipo}, Endereço: {imovel.endereco}, Proprietário: {proprietario.nome}")
-            if imovel.status == 'Sim':
-                print(f"Valor do Aluguel: {imovel.valor_do_aluguel}\nData do inicio do aluguel: {aluguel.data_inicio}\n")
-            else:
-                print(f"Valor do Aluguel: {imovel.valor_do_aluguel}\nData do inicio do aluguel: {aluguel.data_inicio}\nData do final do aluguel: {aluguel.data_final}\n")
+            print(f"Valor do Aluguel: {imovel.valor_do_aluguel}")
+            print(f"\nData do início do aluguel: {aluguel.data_inicio}")
+            if aluguel.data_final != 'Sem data':
+                print(f"Data do final do aluguel: {aluguel.data_final}\n")
     else:
         print("Não existem aluguéis cadastrados no nosso banco de dados!")
 
