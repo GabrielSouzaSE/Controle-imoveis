@@ -222,7 +222,7 @@ def relatorioAluguel():
             print(f"Valor do Aluguel: {imovel.valor_do_aluguel}")
             print(f"Data do início do aluguel: {aluguel.data_inicio}")
             if aluguel.data_final != 'Sem data':
-                print(f"Data do final do aluguel: {aluguel.data_final}\n")
+                print(f"Data do final do aluguel: {aluguel.data_final}")
 
     else:
         print("Não existem aluguéis cadastrados no nosso banco de dados!")
