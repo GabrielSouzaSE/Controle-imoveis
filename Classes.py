@@ -73,18 +73,10 @@ class Aluguel:
         self.data_inicio = data_inicio
         self.data_final = data_final
 
-        # if Aluguel.procurar(cpf_inquilino) is None:
         Aluguel.alugueis.append(self)
 
     @staticmethod
     def procurar(cpf_inquilino):
-        for aluguel in Aluguel.alugueis:
-            if aluguel.cpf_inquilino == cpf_inquilino:
-                return aluguel
-        return None
-
-    @staticmethod
-    def procurar2(cpf_inquilino):
         for aluguel in Aluguel.alugueis:
             if aluguel.cpf_inquilino == cpf_inquilino and aluguel.data_final == 'Sem data':
                 return aluguel
