@@ -143,7 +143,7 @@ def finalizarAluguel():
 
             data_fim = input('\nInforme a data de final do aluguel (DD/MM/AAAA): ')
             data_fim = date(int(data_fim[6:]), int(data_fim[3:5]), int(data_fim[:2]))
-            aluguel = Aluguel.procurar(cpf_inqui)
+            aluguel = Aluguel.procurar2(cpf_inqui)
             if aluguel.data_inicio > data_fim:
                 print('\nFoi inserida uma data final antes da data de início do aluguel!')
                 raise AssertionError
@@ -230,8 +230,9 @@ def relatorioComissao():  # relatorio_comissao python right way
         for aluguel in Aluguel.alugueis:
             imovel = Imovel.procurar(aluguel.codigo_imovel)
             if imovel.status == 'Sim':
-                print(f'Valor do aluguel: {imovel.valor_do_aluguel}, Data do início do aluguel: {aluguel.data_inicio}')
-                print(f'Valor da comissão do imóvel {imovel.codigo}: R${(imovel.valor_do_aluguel * 0.1)}')
+                print(f'Valor do aluguel: {round(imovel.valor_do_aluguel, 2)}')
+                print(f'Data do início do aluguel: {aluguel.data_inicio}')
+                print(f'Valor da comissão do imóvel {imovel.codigo}: R${round((imovel.valor_do_aluguel * 0.1), 2)}')
                 aluguel.calcular_comissao(date.today(), imovel)
     else:
         print("Não existem aluguéis ativos no nosso banco de dados!")
