@@ -180,7 +180,7 @@ def relatorioProprietarios():
         print("Lista dos Proprietários: ")
         print(f"{'Nome':<12} {'CPF':<12} Data de nascimento")
         for proprietario in Proprietario.proprietarios:
-            print(f'{proprietario.nome:<12} {proprietario.cpf:<12} {proprietario.data_nascimento}')
+            print(f'{proprietario.nome:<12} {proprietario.cpf:<12} {proprietario.data_nascimento.strftime("%d/%m/%Y")}')
     else:
         print("Não existem proprietários no nosso banco de dados!")
 
@@ -205,7 +205,7 @@ def relatorioInquilinos():
         print("Lista de Inquilinos: ")
         print(f"{'Nome':<12} {'CPF':<12} Data de nascimento")
         for inquilino in Inquilino.inquilinos:
-            print(f'{inquilino.nome:<12} {inquilino.cpf:<12} {inquilino.data_nascimento}')
+            print(f'{inquilino.nome:<12} {inquilino.cpf:<12} {inquilino.data_nascimento.strftime("%d/%m/%Y")}')
     else:
         print("Não existem inquilinos no nosso banco de dados!")
 
@@ -220,9 +220,9 @@ def relatorioAluguel():
             print(f"\nNome do inquilino: {inquilino.nome} ")
             print(f"Código: {imovel.codigo}, Tipo: {imovel.tipo}, Endereço: {imovel.endereco}, Proprietário: {proprietario.nome}")
             print(f"Valor do Aluguel: {imovel.valor_do_aluguel}")
-            print(f"Data do início do aluguel: {aluguel.data_inicio}")
+            print(f'Data do início do aluguel: {aluguel.data_inicio.strftime("%d/%m/%Y")}')
             if aluguel.data_final != 'Sem data':
-                print(f"Data do final do aluguel: {aluguel.data_final}")
+                print(f'Data do final do aluguel: {aluguel.data_final.strftime("%d/%m/%Y")}')
 
     else:
         print("Não existem aluguéis cadastrados no nosso banco de dados!")
@@ -235,7 +235,7 @@ def relatorioComissao():  # relatorio_comissao python right way
             imovel = Imovel.procurar(aluguel.codigo_imovel)
             if imovel.status == 'Sim':
                 print(f'Valor do aluguel: {round(imovel.valor_do_aluguel, 2)}')
-                print(f'Data do início do aluguel: {aluguel.data_inicio}')
+                print(f'Data do início do aluguel: {aluguel.data_inicio.strftime("%d/%m/%Y")}')
                 print(f'Valor da comissão do imóvel {imovel.codigo}: R${round((imovel.valor_do_aluguel * 0.1), 2)}')
                 aluguel.calcular_comissao(date.today(), imovel)
     else:
