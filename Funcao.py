@@ -215,7 +215,7 @@ def relatorioAluguel():
             proprietario = Proprietario.procurar(imovel.cpf)
             print(f"Nome do inquilino: {inquilino.nome} ")
             print(f"Código: {imovel.codigo}, Tipo: {imovel.tipo}, Endereço: {imovel.endereco}, Proprietário: {proprietario.nome}")
-            if aluguel.data_final == 'Sem data':
+            if imovel.status == 'Sim':
                 print(f"Valor do Aluguel: {imovel.valor_do_aluguel}\nData do inicio do aluguel: {aluguel.data_inicio}\n")
             else:
                 print(f"Valor do Aluguel: {imovel.valor_do_aluguel}\nData do inicio do aluguel: {aluguel.data_inicio}\nData do final do aluguel: {aluguel.data_final}\n")
