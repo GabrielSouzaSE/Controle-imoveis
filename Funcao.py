@@ -211,18 +211,19 @@ def relatorioInquilinos():
 
 
 def relatorioAluguel():
-    print("\nRelatório de Aluguéis\n")
+    print("\nRelatório de Aluguéis")
     if len(Aluguel.alugueis) >= 1:
         for aluguel in Aluguel.alugueis:
             inquilino = Inquilino.procurar(aluguel.cpf_inquilino)
             imovel = Imovel.procurar(aluguel.codigo_imovel)
             proprietario = Proprietario.procurar(imovel.cpf)
-            print(f"Nome do inquilino: {inquilino.nome} ")
+            print(f"\nNome do inquilino: {inquilino.nome} ")
             print(f"Código: {imovel.codigo}, Tipo: {imovel.tipo}, Endereço: {imovel.endereco}, Proprietário: {proprietario.nome}")
             print(f"Valor do Aluguel: {imovel.valor_do_aluguel}")
-            print(f"\nData do início do aluguel: {aluguel.data_inicio}")
+            print(f"Data do início do aluguel: {aluguel.data_inicio}")
             if aluguel.data_final != 'Sem data':
                 print(f"Data do final do aluguel: {aluguel.data_final}\n")
+
     else:
         print("Não existem aluguéis cadastrados no nosso banco de dados!")
 
