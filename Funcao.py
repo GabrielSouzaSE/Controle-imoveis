@@ -219,7 +219,7 @@ def relatorioAluguel():
             proprietario = Proprietario.procurar(imovel.cpf)
             print(f"\nNome do inquilino: {inquilino.nome} ")
             print(f"Código: {imovel.codigo}, Tipo: {imovel.tipo}, Endereço: {imovel.endereco}, Proprietário: {proprietario.nome}")
-            print(f"Valor do Aluguel: {imovel.valor_do_aluguel}")
+            print(f"Valor do Aluguel: R${imovel.valor_do_aluguel}")
             print(f'Data do início do aluguel: {aluguel.data_inicio.strftime("%d/%m/%Y")}')
             if aluguel.data_final != 'Sem data':
                 print(f'Data do final do aluguel: {aluguel.data_final.strftime("%d/%m/%Y")}')
@@ -234,7 +234,7 @@ def relatorioComissao():  # relatorio_comissao python right way
         for aluguel in Aluguel.alugueis:
             imovel = Imovel.procurar(aluguel.codigo_imovel)
             if imovel.status == 'Sim':
-                print(f'Valor do aluguel: {round(imovel.valor_do_aluguel, 2)}')
+                print(f'Valor do aluguel: R${round(imovel.valor_do_aluguel, 2)}')
                 print(f'Data do início do aluguel: {aluguel.data_inicio.strftime("%d/%m/%Y")}')
                 print(f'Valor da comissão do imóvel {imovel.codigo}: R${round((imovel.valor_do_aluguel * 0.1), 2)}')
                 aluguel.calcular_comissao(date.today(), imovel)
