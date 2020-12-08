@@ -76,11 +76,17 @@ class Aluguel:
         # if Aluguel.procurar(cpf_inquilino) is None:
         Aluguel.alugueis.append(self)
 
-
     @staticmethod
     def procurar(cpf_inquilino):
         for aluguel in Aluguel.alugueis:
             if aluguel.cpf_inquilino == cpf_inquilino:
+                return aluguel
+        return None
+
+    @staticmethod
+    def procurar2(cpf_inquilino):
+        for aluguel in Aluguel.alugueis:
+            if aluguel.cpf_inquilino == cpf_inquilino and aluguel.data_final == 'Sem data':
                 return aluguel
         return None
 
@@ -90,4 +96,4 @@ class Aluguel:
 
     def calcular_comissao(self, data_atual, imovel):
         duracao = data_atual - self.data_inicio
-        return print(f"Comissão calculada para a data atual: R${(duracao.days // 30) * (imovel.valor_do_aluguel * 0.1)}\n")
+        return print(f"Comissão calculada para a data atual: R${round((duracao.days // 30) * (imovel.valor_do_aluguel * 0.1), 2)}\n")

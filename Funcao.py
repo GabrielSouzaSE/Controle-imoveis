@@ -143,11 +143,7 @@ def finalizarAluguel():
 
             data_fim = input('\nInforme a data de final do aluguel (DD/MM/AAAA): ')
             data_fim = date(int(data_fim[6:]), int(data_fim[3:5]), int(data_fim[:2]))
-
             aluguel = Aluguel.procurar(cpf_inqui)
-            # while aluguel.status == 'Não':
-            #     aluguel = Aluguel.procurar(cpf_inqui)
-
             if aluguel.data_inicio > data_fim:
                 print('\nFoi inserida uma data final antes da data de início do aluguel!')
                 raise AssertionError
