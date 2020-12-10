@@ -1,8 +1,6 @@
 from Funcao import cadastrarProprietario, cadastrarImovel, cadastrarInquilino, registrarAluguel, finalizarAluguel, \
     relatorioProprietarios, relatorioImoveis, relatorioInquilinos, relatorioComissao, relatorioAluguel, \
     salvarDataframe, ExcelparaMemoria, criarDataFrame
-from datetime import date
-import Classes
 
 try:
     open('Dados.xlsx', 'r')
@@ -11,6 +9,7 @@ except IOError:
     criarDataFrame()
 
 ExcelparaMemoria()
+
 while True:
     print('\nMenu de Imóvel\n\n'
           '1 - Cadastrar Proprietário\n'
