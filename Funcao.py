@@ -141,7 +141,7 @@ def finalizarAluguel():
             assert codigo_imovel.isnumeric()
             imovel = Imovel.procurar(codigo_imovel)
             if imovel is None or imovel.status == 'Não':
-                print('\nO imóvel não está cadastrado no nosso banco de dados ou não existe um aluguel registrado nesse imóvel!')
+                print('\nO imóvel não está cadastrado no nosso banco de dados ou não existe um aluguel ativo nesse imóvel!')
                 raise AssertionError
 
             data_fim = input('\nInforme a data de final do aluguel (DD/MM/AAAA): ')
