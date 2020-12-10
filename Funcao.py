@@ -233,7 +233,7 @@ def relatorioComissao():  # relatorio_comissao python right way
     if len(Aluguel.alugueis) >= 1:
         for aluguel in Aluguel.alugueis:
             imovel = Imovel.procurar(aluguel.codigo_imovel)
-            if imovel.status == 'Sim':
+            if aluguel.data_final == 'Sem data':
                 print(f'Valor do aluguel: R${round(imovel.valor_do_aluguel, 2)}')
                 print(f'Data do início do aluguel: {aluguel.data_inicio.strftime("%d/%m/%Y")}')
                 print(f'Valor da comissão do imóvel {imovel.codigo}: R${round((imovel.valor_do_aluguel * 0.1), 2)}')
